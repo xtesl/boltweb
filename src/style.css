@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@source "./src/**/*.{vue,js,ts,jsx,tsx}";
+
 
 /* Define your custom colors using CSS variables */
 @theme {

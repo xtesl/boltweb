@@ -25,6 +25,9 @@ export default defineConfig({
   //     '@': path.resolve(__dirname, './src')
   //   }
   // },
+   build: {
+    cssCodeSplit: true, // 👈 THIS IS THE KEY FIX
+  },
   ssgOptions: {
     script: 'async',
     formatting: 'minify',

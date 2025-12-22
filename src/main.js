@@ -1,7 +1,7 @@
 // import { createApp } from 'vue'
 import { createHead } from '@vueuse/head'
 import { ViteSSG } from 'vite-ssg'
-import './style.css'
+
 import routes from './router/index.js'
 import App from './App.vue'
 import 'primeicons/primeicons.css'
@@ -13,7 +13,7 @@ import 'primeicons/primeicons.css'
 // app.use(head)
 // app.mount('#app')
 
-
+import './style.css'
 
 export const createApp = ViteSSG(
   App,
