@@ -12,7 +12,7 @@ const props = defineProps({
   },
   image: {
     type: String,
-    default: '/images/boltweb_logo.png' // Default Open Graph image
+    default: 'https://boltweb.onrender.com/images/boltweb_logo.png' // Default Open Graph image
   },
   url: {
     type: String,
