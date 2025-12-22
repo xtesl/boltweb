@@ -6,7 +6,7 @@
       'flex items-center justify-center shadow-lg cursor-pointer z-[1000]',
       'transition-all duration-300 ease-in-out hover:bg-[#128C7E]',
       'hover:scale-110 hover:shadow-xl group',
-      'md:bottom-8 md:right-8 max-md:w-12 max-md:h-12 max-md:bottom-5 max-md:right-5',
+      'md:bottom-8 md:right-8 max-md:w-12 max-md:h-12 max-md:bottom-20 max-md:right-5',
       { 'animate-pulse-ring': showPulse }
     ]"
     target="_blank" 
