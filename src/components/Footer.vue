@@ -1,12 +1,15 @@
 <script setup>
 import { ref } from 'vue'
+import { useToast } from '../composables/useToast'
+
+const { success, error, warning, info } = useToast()
 
 const currentYear = new Date().getFullYear()
 const email = ref('')
 
 const handleSubscribe = () => {
   if (email.value) {
-    alert('Thank you for subscribing!')
+    success('Thank you for subscribing! Check your email.')
     email.value = ''
   }
 }

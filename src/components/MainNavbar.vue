@@ -1,10 +1,13 @@
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, computed } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 
 const router = useRouter()
+const route = useRoute()
 const isMenuOpen = ref(false)
 const isScrolled = ref(false)
+
+defineEmits(['open-about'])
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
@@ -17,6 +20,11 @@ const closeMenu = () => {
 const navigateTo = (path) => {
   router.push(path)
   closeMenu()
+}
+
+// Check if route is active
+const isActive = (path) => {
+  return route.path === path
 }
 
 // Add scroll effect
@@ -40,15 +48,11 @@ if (typeof window !== 'undefined') {
         <!-- Logo with Animation -->
         <div class="flex-shrink-0 flex items-center cursor-pointer group" @click="navigateTo('/')">
           <div class="relative">
-            <!-- <div class="w-12 h-12 bg-gradient-to-br from-accent-400 via-accent-500 to-accent-600 rounded-xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
-              <i class="pi pi-bolt text-white text-2xl"></i>
-            </div> -->
             <img
-          src="/images/boltweb_logo.png"
-          alt="DeleAI Logo"
-          class="w-10 h-10 object-contain transition-transform duration-300 group-hover:scale-110"
-       
-        />
+              src="/images/boltweb_logo.png"
+              alt="BoltWeb Logo"
+              class="w-10 h-10 object-contain transition-transform duration-300 group-hover:scale-110"
+            />
             <div class="absolute -top-1 -right-1 w-3 h-3 bg-primary-600 rounded-full animate-pulse"></div>
           </div>
           <div class="ml-3">
@@ -61,28 +65,106 @@ if (typeof window !== 'undefined') {
 
         <!-- Desktop Navigation -->
         <div class="hidden lg:flex items-center space-x-1">
-          <router-link :to="'/'" class="group px-4 py-2 rounded-lg text-secondary-700 hover:text-primary-600 hover:bg-primary-50 font-semibold transition-all duration-200 flex items-center gap-2">
-            <i class="pi pi-home text-lg group-hover:scale-110 transition-transform"></i>
+          <router-link 
+            to="/" 
+            :class="[
+              'group px-4 py-2 rounded-lg font-semibold transition-all duration-200 flex items-center gap-2',
+              isActive('/') 
+                ? 'bg-primary-600 text-white' 
+                : 'text-secondary-700 hover:text-primary-600 hover:bg-primary-50'
+            ]"
+          >
+            <i :class="[
+              'pi pi-home text-lg transition-transform',
+              isActive('/') ? '' : 'group-hover:scale-110'
+            ]"></i>
             Home
           </router-link>
-          <router-link :to="'/services'" class="group px-4 py-2 rounded-lg text-secondary-700 hover:text-primary-600 hover:bg-primary-50 font-semibold transition-all duration-200 flex items-center gap-2">
-            <i class="pi pi-wrench text-lg group-hover:scale-110 transition-transform"></i>
+
+          <router-link 
+            to="/services" 
+            :class="[
+              'group px-4 py-2 rounded-lg font-semibold transition-all duration-200 flex items-center gap-2',
+              isActive('/services') 
+                ? 'bg-primary-600 text-white' 
+                : 'text-secondary-700 hover:text-primary-600 hover:bg-primary-50'
+            ]"
+          >
+            <i :class="[
+              'pi pi-wrench text-lg transition-transform',
+              isActive('/services') ? '' : 'group-hover:scale-110'
+            ]"></i>
             Services
           </router-link>
-          <router-link :to="portfolio" class="group px-4 py-2 rounded-lg text-secondary-700 hover:text-primary-600 hover:bg-primary-50 font-semibold transition-all duration-200 flex items-center gap-2">
-            <i class="pi pi-images text-lg group-hover:scale-110 transition-transform"></i>
+
+          <router-link 
+            to="/portfolio" 
+            :class="[
+              'group px-4 py-2 rounded-lg font-semibold transition-all duration-200 flex items-center gap-2',
+              isActive('/portfolio') 
+                ? 'bg-primary-600 text-white' 
+                : 'text-secondary-700 hover:text-primary-600 hover:bg-primary-50'
+            ]"
+          >
+            <i :class="[
+              'pi pi-images text-lg transition-transform',
+              isActive('/portfolio') ? '' : 'group-hover:scale-110'
+            ]"></i>
             Portfolio
           </router-link>
-          <router-link :to="'/pricing'" class="group px-4 py-2 rounded-lg text-secondary-700 hover:text-primary-600 hover:bg-primary-50 font-semibold transition-all duration-200 flex items-center gap-2">
-            <i class="pi pi-tag text-lg group-hover:scale-110 transition-transform"></i>
+
+          <router-link 
+            to="/pricing" 
+            :class="[
+              'group px-4 py-2 rounded-lg font-semibold transition-all duration-200 flex items-center gap-2',
+              isActive('/pricing') 
+                ? 'bg-primary-600 text-white' 
+                : 'text-secondary-700 hover:text-primary-600 hover:bg-primary-50'
+            ]"
+          >
+            <i :class="[
+              'pi pi-tag text-lg transition-transform',
+              isActive('/pricing') ? '' : 'group-hover:scale-110'
+            ]"></i>
             Pricing
           </router-link>
-          <router-link :to="'/about'" class="group px-4 py-2 rounded-lg text-secondary-700 hover:text-primary-600 hover:bg-primary-50 font-semibold transition-all duration-200 flex items-center gap-2">
-            <i class="pi pi-info-circle text-lg group-hover:scale-110 transition-transform"></i>
+
+          <!-- <router-link 
+            to="/about" 
+            :class="[
+              'group px-4 py-2 rounded-lg font-semibold transition-all duration-200 flex items-center gap-2',
+              isActive('/about') 
+                ? 'bg-primary-600 text-white' 
+                : 'text-secondary-700 hover:text-primary-600 hover:bg-primary-50'
+            ]"
+          >
+            <i :class="[
+              'pi pi-info-circle text-lg transition-transform',
+              isActive('/about') ? '' : 'group-hover:scale-110'
+            ]"></i>
             About
-          </router-link>
-          <router-link :to="'/contact'" class="group px-4 py-2 rounded-lg text-secondary-700 hover:text-primary-600 hover:bg-primary-50 font-semibold transition-all duration-200 flex items-center gap-2">
-            <i class="pi pi-envelope text-lg group-hover:scale-110 transition-transform"></i>
+          </router-link> -->
+          <button 
+  @click="$emit('open-about')"
+  class="group px-4 py-2 rounded-lg text-secondary-700 hover:text-primary-600 hover:bg-primary-50 font-semibold transition-all duration-200 flex items-center gap-2"
+>
+  <i class="pi pi-info-circle text-lg group-hover:scale-110 transition-transform"></i>
+  About
+</button>
+
+          <router-link 
+            to="/contact" 
+            :class="[
+              'group px-4 py-2 rounded-lg font-semibold transition-all duration-200 flex items-center gap-2',
+              isActive('/contact') 
+                ? 'bg-primary-600 text-white' 
+                : 'text-secondary-700 hover:text-primary-600 hover:bg-primary-50'
+            ]"
+          >
+            <i :class="[
+              'pi pi-envelope text-lg transition-transform',
+              isActive('/contact') ? '' : 'group-hover:scale-110'
+            ]"></i>
             Contact
           </router-link>
         </div>
@@ -141,67 +223,171 @@ if (typeof window !== 'undefined') {
     >
       <div class="bg-gradient-to-b from-secondary-50 to-white border-t border-secondary-200 px-4 py-6 space-y-2">
         <router-link
-          :to="'/'" 
+          to="/" 
           @click="closeMenu"
-          class="group flex items-center gap-3 px-4 py-3.5 rounded-xl text-secondary-700 hover:bg-primary-600 hover:text-white font-semibold transition-all duration-200 transform hover:translate-x-2"
+          :class="[
+            'group flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold transition-all duration-200 transform',
+            isActive('/') 
+              ? 'bg-primary-600 text-white translate-x-2' 
+              : 'text-secondary-700 hover:bg-primary-600 hover:text-white hover:translate-x-2'
+          ]"
         >
-          <div class="w-10 h-10 rounded-lg bg-primary-50 group-hover:bg-white/20 flex items-center justify-center transition-colors">
-            <i class="pi pi-home text-xl text-primary-600 group-hover:text-white"></i>
+          <div :class="[
+            'w-10 h-10 rounded-lg flex items-center justify-center transition-colors',
+            isActive('/') 
+              ? 'bg-white/20' 
+              : 'bg-primary-50 group-hover:bg-white/20'
+          ]">
+            <i :class="[
+              'pi pi-home text-xl',
+              isActive('/') 
+                ? 'text-white' 
+                : 'text-primary-600 group-hover:text-white'
+            ]"></i>
           </div>
           <span>Home</span>
         </router-link>
         
         <router-link
-          :to="'/services'" 
+          to="/services" 
           @click="closeMenu"
-          class="group flex items-center gap-3 px-4 py-3.5 rounded-xl text-secondary-700 hover:bg-primary-600 hover:text-white font-semibold transition-all duration-200 transform hover:translate-x-2"
+          :class="[
+            'group flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold transition-all duration-200 transform',
+            isActive('/services') 
+              ? 'bg-primary-600 text-white translate-x-2' 
+              : 'text-secondary-700 hover:bg-primary-600 hover:text-white hover:translate-x-2'
+          ]"
         >
-          <div class="w-10 h-10 rounded-lg bg-primary-50 group-hover:bg-white/20 flex items-center justify-center transition-colors">
-            <i class="pi pi-wrench text-xl text-primary-600 group-hover:text-white"></i>
+          <div :class="[
+            'w-10 h-10 rounded-lg flex items-center justify-center transition-colors',
+            isActive('/services') 
+              ? 'bg-white/20' 
+              : 'bg-primary-50 group-hover:bg-white/20'
+          ]">
+            <i :class="[
+              'pi pi-wrench text-xl',
+              isActive('/services') 
+                ? 'text-white' 
+                : 'text-primary-600 group-hover:text-white'
+            ]"></i>
           </div>
           <span>Services</span>
         </router-link>
         
         <router-link
-          :to="'/portfolio'" 
+          to="/portfolio" 
           @click="closeMenu"
-          class="group flex items-center gap-3 px-4 py-3.5 rounded-xl text-secondary-700 hover:bg-primary-600 hover:text-white font-semibold transition-all duration-200 transform hover:translate-x-2"
+          :class="[
+            'group flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold transition-all duration-200 transform',
+            isActive('/portfolio') 
+              ? 'bg-primary-600 text-white translate-x-2' 
+              : 'text-secondary-700 hover:bg-primary-600 hover:text-white hover:translate-x-2'
+          ]"
         >
-          <div class="w-10 h-10 rounded-lg bg-primary-50 group-hover:bg-white/20 flex items-center justify-center transition-colors">
-            <i class="pi pi-images text-xl text-primary-600 group-hover:text-white"></i>
+          <div :class="[
+            'w-10 h-10 rounded-lg flex items-center justify-center transition-colors',
+            isActive('/portfolio') 
+              ? 'bg-white/20' 
+              : 'bg-primary-50 group-hover:bg-white/20'
+          ]">
+            <i :class="[
+              'pi pi-images text-xl',
+              isActive('/portfolio') 
+                ? 'text-white' 
+                : 'text-primary-600 group-hover:text-white'
+            ]"></i>
           </div>
           <span>Portfolio</span>
         </router-link>
         
         <router-link
-          :to="'/pricing'" 
+          to="/pricing" 
           @click="closeMenu"
-          class="group flex items-center gap-3 px-4 py-3.5 rounded-xl text-secondary-700 hover:bg-primary-600 hover:text-white font-semibold transition-all duration-200 transform hover:translate-x-2"
+          :class="[
+            'group flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold transition-all duration-200 transform',
+            isActive('/pricing') 
+              ? 'bg-primary-600 text-white translate-x-2' 
+              : 'text-secondary-700 hover:bg-primary-600 hover:text-white hover:translate-x-2'
+          ]"
         >
-          <div class="w-10 h-10 rounded-lg bg-primary-50 group-hover:bg-white/20 flex items-center justify-center transition-colors">
-            <i class="pi pi-tag text-xl text-primary-600 group-hover:text-white"></i>
+          <div :class="[
+            'w-10 h-10 rounded-lg flex items-center justify-center transition-colors',
+            isActive('/pricing') 
+              ? 'bg-white/20' 
+              : 'bg-primary-50 group-hover:bg-white/20'
+          ]">
+            <i :class="[
+              'pi pi-tag text-xl',
+              isActive('/pricing') 
+                ? 'text-white' 
+                : 'text-primary-600 group-hover:text-white'
+            ]"></i>
           </div>
           <span>Pricing</span>
         </router-link>
         
-        <router-link
-          :to="'/about'" 
+        <!-- <router-link
+          to="/about" 
           @click="closeMenu"
-          class="group flex items-center gap-3 px-4 py-3.5 rounded-xl text-secondary-700 hover:bg-primary-600 hover:text-white font-semibold transition-all duration-200 transform hover:translate-x-2"
+          :class="[
+            'group flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold transition-all duration-200 transform',
+            isActive('/about') 
+              ? 'bg-primary-600 text-white translate-x-2' 
+              : 'text-secondary-700 hover:bg-primary-600 hover:text-white hover:translate-x-2'
+          ]"
         >
-          <div class="w-10 h-10 rounded-lg bg-primary-50 group-hover:bg-white/20 flex items-center justify-center transition-colors">
-            <i class="pi pi-info-circle text-xl text-primary-600 group-hover:text-white"></i>
+          <div :class="[
+            'w-10 h-10 rounded-lg flex items-center justify-center transition-colors',
+            isActive('/about') 
+              ? 'bg-white/20' 
+              : 'bg-primary-50 group-hover:bg-white/20'
+          ]">
+            <i :class="[
+              'pi pi-info-circle text-xl',
+              isActive('/about') 
+                ? 'text-white' 
+                : 'text-primary-600 group-hover:text-white'
+            ]"></i>
           </div>
           <span>About</span>
-        </router-link>
+        </router-link> -->
+                <button 
+  @click="$emit('open-about')"
+  :class="[
+            'group flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold transition-all duration-200 transform',
+            isActive('/about') 
+              ? 'bg-primary-600 text-white translate-x-2' 
+              : 'text-secondary-700 hover:bg-primary-600 hover:text-white hover:translate-x-2'
+      ]"
+>
+
+  <i class="w-10 h-10 pi pi-info-circle text-primary-600 group-hover:text-white bg-primary-50 
+  group-hover:bg-white/20 text-xl rounded-lg flex items-center justify-center group-hover:scale-110 transition-colors"></i>
+  About
+</button>
         
         <router-link
-          :to="'/contact'" 
+          to="/contact" 
           @click="closeMenu"
-          class="group flex items-center gap-3 px-4 py-3.5 rounded-xl text-secondary-700 hover:bg-primary-600 hover:text-white font-semibold transition-all duration-200 transform hover:translate-x-2"
+          :class="[
+            'group flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold transition-all duration-200 transform',
+            isActive('/contact') 
+              ? 'bg-primary-600 text-white translate-x-2' 
+              : 'text-secondary-700 hover:bg-primary-600 hover:text-white hover:translate-x-2'
+          ]"
         >
-          <div class="w-10 h-10 rounded-lg bg-primary-50 group-hover:bg-white/20 flex items-center justify-center transition-colors">
-            <i class="pi pi-envelope text-xl text-primary-600 group-hover:text-white"></i>
+          <div :class="[
+            'w-10 h-10 rounded-lg flex items-center justify-center transition-colors',
+            isActive('/contact') 
+              ? 'bg-white/20' 
+              : 'bg-primary-50 group-hover:bg-white/20'
+          ]">
+            <i :class="[
+              'pi pi-envelope text-xl',
+              isActive('/contact') 
+                ? 'text-white' 
+                : 'text-primary-600 group-hover:text-white'
+            ]"></i>
           </div>
           <span>Contact</span>
         </router-link>

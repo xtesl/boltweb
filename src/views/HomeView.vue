@@ -27,6 +27,7 @@
     <!-- Content -->
     <HeroSection />
     <FAQsSection />
+    <TeamSection />
   </div>
 </template>
 
@@ -34,5 +35,6 @@
 import HeroSection from '../components/HeroSection.vue'
 import FAQsSection from '../components/FAQs.vue'
 import SEO from '../components/SEO.vue'
+import TeamSection from '../components/TeamSection.vue'
 import StructuredData from '../components/StructuredData.vue'
 </script>
