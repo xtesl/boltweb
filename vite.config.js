@@ -25,12 +25,13 @@ export default defineConfig({
   //     '@': path.resolve(__dirname, './src')
   //   }
   // },
+  base: '/',
    build: {
-    cssCodeSplit: true, // 👈 THIS IS THE KEY FIX
+    outdir: "dist",
+    cssCodeSplit: true, 
   },
   ssgOptions: {
     script: 'async',
     formatting: 'minify',
-    dirStyle: 'nested'
   }
 })
