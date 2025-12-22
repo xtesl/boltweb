@@ -61,11 +61,11 @@ if (typeof window !== 'undefined') {
 
         <!-- Desktop Navigation -->
         <div class="hidden lg:flex items-center space-x-1">
-          <a href="#" class="group px-4 py-2 rounded-lg text-secondary-700 hover:text-primary-600 hover:bg-primary-50 font-semibold transition-all duration-200 flex items-center gap-2">
+          <a href="/" class="group px-4 py-2 rounded-lg text-secondary-700 hover:text-primary-600 hover:bg-primary-50 font-semibold transition-all duration-200 flex items-center gap-2">
             <i class="pi pi-home text-lg group-hover:scale-110 transition-transform"></i>
             Home
           </a>
-          <a href="#services" class="group px-4 py-2 rounded-lg text-secondary-700 hover:text-primary-600 hover:bg-primary-50 font-semibold transition-all duration-200 flex items-center gap-2">
+          <a href="/services" class="group px-4 py-2 rounded-lg text-secondary-700 hover:text-primary-600 hover:bg-primary-50 font-semibold transition-all duration-200 flex items-center gap-2">
             <i class="pi pi-wrench text-lg group-hover:scale-110 transition-transform"></i>
             Services
           </a>

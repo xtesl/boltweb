@@ -6,6 +6,24 @@
       image="https://boltweb.onrender.com/images/boltweb_logo.png"
       url="https://boltweb.onrender.com"
     />
+    <StructuredData 
+      type="Organization"
+      :data="{
+        name: 'BoltWeb',
+        url: 'https://boltweb.onrender.com',
+        logo: 'https://boltweb.onrender.com/boltweb_logo.png',
+        contactPoint: {
+          '@type': 'ContactPoint',
+          telephone: '+233-55-251-0654',
+          contactType: 'customer service'
+        },
+        sameAs: [
+          'https://facebook.com/yourpage',
+          'https://x.com/manuel_tamme',
+          'https://instagram.com/eddwats'
+        ]
+      }"
+    />
     <!-- Content -->
     <HeroSection />
     <FAQsSection />
@@ -16,4 +34,5 @@
 import HeroSection from '../components/HeroSection.vue'
 import FAQsSection from '../components/FAQs.vue'
 import SEO from '../components/SEO.vue'
+import StructuredData from '../components/StructuredData.vue'
 </script>

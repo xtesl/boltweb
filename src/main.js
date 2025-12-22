@@ -1,13 +1,26 @@
-import { createApp } from 'vue'
+// import { createApp } from 'vue'
 import { createHead } from '@vueuse/head'
+import { ViteSSG } from 'vite-ssg'
 import './style.css'
-import router from './router'
+import routes from './router/index.js'
 import App from './App.vue'
 import 'primeicons/primeicons.css'
 
-const app = createApp(App)
-const head = createHead()
+// const app = createApp(App)
+// const head = createHead()
 
-app.use(router)
-app.use(head)
-app.mount('#app')
+// app.use(router)
+// app.use(head)
+// app.mount('#app')
+
+
+
+export const createApp = ViteSSG(
+  App,
+  { routes, base: import.meta.env.BASE_URL },
+  ({ app, router, routes,  initialState }) => {
+    const head = createHead()
+    app.use(head)
+ 
+  }
+)
