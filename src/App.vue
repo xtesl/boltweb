@@ -5,7 +5,7 @@
       <Footer />
   </main>
   <WhatsAppButton 
-      phone-number="233501234567"
+      phone-number="233552510654"
       message="Hello! I'd like to know more"
       :show-pulse="true"
     />
