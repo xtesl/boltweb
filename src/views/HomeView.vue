@@ -3,7 +3,7 @@
     <SEO 
       title="BoltWeb - Fast & Affordable Websites"
       description="Get your business online quickly with BoltWeb's fast and affordable website solutions."
-      image="https://boltweb.onrender.com/images/boltweb_logo.png"
+      image="https://boltweb.onrender.com/images/og-image.jpg"
       url="https://boltweb.onrender.com"
     />
     <StructuredData 
@@ -11,7 +11,7 @@
       :data="{
         name: 'BoltWeb',
         url: 'https://boltweb.onrender.com',
-        logo: 'https://boltweb.onrender.com/boltweb_logo.png',
+        logo: 'https://boltweb.onrender.com/og-image.jpg',
         contactPoint: {
           '@type': 'ContactPoint',
           telephone: '+233-55-251-0654',
