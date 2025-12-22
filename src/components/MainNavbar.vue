@@ -61,30 +61,30 @@ if (typeof window !== 'undefined') {
 
         <!-- Desktop Navigation -->
         <div class="hidden lg:flex items-center space-x-1">
-          <a href="/" class="group px-4 py-2 rounded-lg text-secondary-700 hover:text-primary-600 hover:bg-primary-50 font-semibold transition-all duration-200 flex items-center gap-2">
+          <router-link :to="'/'" class="group px-4 py-2 rounded-lg text-secondary-700 hover:text-primary-600 hover:bg-primary-50 font-semibold transition-all duration-200 flex items-center gap-2">
             <i class="pi pi-home text-lg group-hover:scale-110 transition-transform"></i>
             Home
-          </a>
-          <a href="/services" class="group px-4 py-2 rounded-lg text-secondary-700 hover:text-primary-600 hover:bg-primary-50 font-semibold transition-all duration-200 flex items-center gap-2">
+          </router-link>
+          <router-link :to="'/services'" class="group px-4 py-2 rounded-lg text-secondary-700 hover:text-primary-600 hover:bg-primary-50 font-semibold transition-all duration-200 flex items-center gap-2">
             <i class="pi pi-wrench text-lg group-hover:scale-110 transition-transform"></i>
             Services
-          </a>
-          <a href="#portfolio" class="group px-4 py-2 rounded-lg text-secondary-700 hover:text-primary-600 hover:bg-primary-50 font-semibold transition-all duration-200 flex items-center gap-2">
+          </router-link>
+          <router-link :to="portfolio" class="group px-4 py-2 rounded-lg text-secondary-700 hover:text-primary-600 hover:bg-primary-50 font-semibold transition-all duration-200 flex items-center gap-2">
             <i class="pi pi-images text-lg group-hover:scale-110 transition-transform"></i>
             Portfolio
-          </a>
-          <a href="#pricing" class="group px-4 py-2 rounded-lg text-secondary-700 hover:text-primary-600 hover:bg-primary-50 font-semibold transition-all duration-200 flex items-center gap-2">
+          </router-link>
+          <router-link :to="'/pricing'" class="group px-4 py-2 rounded-lg text-secondary-700 hover:text-primary-600 hover:bg-primary-50 font-semibold transition-all duration-200 flex items-center gap-2">
             <i class="pi pi-tag text-lg group-hover:scale-110 transition-transform"></i>
             Pricing
-          </a>
-          <a href="#about" class="group px-4 py-2 rounded-lg text-secondary-700 hover:text-primary-600 hover:bg-primary-50 font-semibold transition-all duration-200 flex items-center gap-2">
+          </router-link>
+          <router-link :to="'/about'" class="group px-4 py-2 rounded-lg text-secondary-700 hover:text-primary-600 hover:bg-primary-50 font-semibold transition-all duration-200 flex items-center gap-2">
             <i class="pi pi-info-circle text-lg group-hover:scale-110 transition-transform"></i>
             About
-          </a>
-          <a href="#contact" class="group px-4 py-2 rounded-lg text-secondary-700 hover:text-primary-600 hover:bg-primary-50 font-semibold transition-all duration-200 flex items-center gap-2">
+          </router-link>
+          <router-link :to="'/contact'" class="group px-4 py-2 rounded-lg text-secondary-700 hover:text-primary-600 hover:bg-primary-50 font-semibold transition-all duration-200 flex items-center gap-2">
             <i class="pi pi-envelope text-lg group-hover:scale-110 transition-transform"></i>
             Contact
-          </a>
+          </router-link>
         </div>
 
         <!-- CTA Button (Desktop) -->
@@ -140,8 +140,8 @@ if (typeof window !== 'undefined') {
       ]"
     >
       <div class="bg-gradient-to-b from-secondary-50 to-white border-t border-secondary-200 px-4 py-6 space-y-2">
-        <a 
-          href="#home" 
+        <router-link
+          :to="'/'" 
           @click="closeMenu"
           class="group flex items-center gap-3 px-4 py-3.5 rounded-xl text-secondary-700 hover:bg-primary-600 hover:text-white font-semibold transition-all duration-200 transform hover:translate-x-2"
         >
@@ -149,10 +149,10 @@ if (typeof window !== 'undefined') {
             <i class="pi pi-home text-xl text-primary-600 group-hover:text-white"></i>
           </div>
           <span>Home</span>
-        </a>
+        </router-link>
         
-        <a 
-          href="#services" 
+        <router-link
+          :to="'/services'" 
           @click="closeMenu"
           class="group flex items-center gap-3 px-4 py-3.5 rounded-xl text-secondary-700 hover:bg-primary-600 hover:text-white font-semibold transition-all duration-200 transform hover:translate-x-2"
         >
@@ -160,10 +160,10 @@ if (typeof window !== 'undefined') {
             <i class="pi pi-wrench text-xl text-primary-600 group-hover:text-white"></i>
           </div>
           <span>Services</span>
-        </a>
+        </router-link>
         
-        <a 
-          href="#portfolio" 
+        <router-link
+          :to="'/portfolio'" 
           @click="closeMenu"
           class="group flex items-center gap-3 px-4 py-3.5 rounded-xl text-secondary-700 hover:bg-primary-600 hover:text-white font-semibold transition-all duration-200 transform hover:translate-x-2"
         >
@@ -171,10 +171,10 @@ if (typeof window !== 'undefined') {
             <i class="pi pi-images text-xl text-primary-600 group-hover:text-white"></i>
           </div>
           <span>Portfolio</span>
-        </a>
+        </router-link>
         
-        <a 
-          href="#pricing" 
+        <router-link
+          :to="'/pricing'" 
           @click="closeMenu"
           class="group flex items-center gap-3 px-4 py-3.5 rounded-xl text-secondary-700 hover:bg-primary-600 hover:text-white font-semibold transition-all duration-200 transform hover:translate-x-2"
         >
@@ -182,10 +182,10 @@ if (typeof window !== 'undefined') {
             <i class="pi pi-tag text-xl text-primary-600 group-hover:text-white"></i>
           </div>
           <span>Pricing</span>
-        </a>
+        </router-link>
         
-        <a 
-          href="#about" 
+        <router-link
+          :to="'/about'" 
           @click="closeMenu"
           class="group flex items-center gap-3 px-4 py-3.5 rounded-xl text-secondary-700 hover:bg-primary-600 hover:text-white font-semibold transition-all duration-200 transform hover:translate-x-2"
         >
@@ -193,10 +193,10 @@ if (typeof window !== 'undefined') {
             <i class="pi pi-info-circle text-xl text-primary-600 group-hover:text-white"></i>
           </div>
           <span>About</span>
-        </a>
+        </router-link>
         
-        <a 
-          href="#contact" 
+        <router-link
+          :to="'/contact'" 
           @click="closeMenu"
           class="group flex items-center gap-3 px-4 py-3.5 rounded-xl text-secondary-700 hover:bg-primary-600 hover:text-white font-semibold transition-all duration-200 transform hover:translate-x-2"
         >
@@ -204,7 +204,7 @@ if (typeof window !== 'undefined') {
             <i class="pi pi-envelope text-xl text-primary-600 group-hover:text-white"></i>
           </div>
           <span>Contact</span>
-        </a>
+        </router-link>
         
         <!-- Mobile CTA Button -->
         <div class="pt-4">
