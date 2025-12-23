@@ -1,6 +1,9 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+
+const { locale } = useI18n()
 
 const router = useRouter()
 const route = useRoute()
@@ -8,23 +11,24 @@ const isMenuOpen = ref(false)
 const isScrolled = ref(false)
 const isServicesOpen = ref(false)
 const isLanguageOpen = ref(false)
-const currentLanguage = ref('English')
-const currentFlag = ref('us')
 
 const languages = [
-  { code: 'en', name: 'English', flag: 'us' },
-  { code: 'fr', name: 'Français', flag: 'fr' },
-  { code: 'es', name: 'Español', flag: 'es' },
-  { code: 'de', name: 'Deutsch', flag: 'de' },
+  { code: 'en', label: 'English', flag: 'gb' },
+  { code: 'fr', label: 'Français', flag: 'fr' },
+  { code: 'es', label: 'Español', flag: 'es' }
 ]
+
+// Get current language object
+const currentLanguage = computed(() => {
+  return languages.find(lang => lang.code === locale.value) || languages[0]
+})
 
 const toggleLanguage = () => {
   isLanguageOpen.value = !isLanguageOpen.value
 }
 
 const selectLanguage = (lang) => {
-  currentLanguage.value = lang.name
-  currentFlag.value = lang.flag
+  locale.value = lang.code
   isLanguageOpen.value = false
 }
 
@@ -107,7 +111,6 @@ if (typeof window !== 'undefined') {
             class="group px-5 py-2.5 rounded-lg text-secondary-800 hover:text-primary-600 hover:bg-primary-50 font-semibold text-base transition-all duration-200 flex items-center gap-2"
           >
             <span>Services</span>
-            <!-- <i class="pi pi-chevron-down text-xs group-hover:translate-y-0.5 transition-transform"></i> -->
         </router-link>
 
           <router-link 
@@ -162,11 +165,11 @@ if (typeof window !== 'undefined') {
               class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white border-2 border-secondary-200 hover:border-primary-400 hover:bg-primary-50 font-semibold text-sm transition-all duration-200 shadow hover:shadow-md"
             >
               <img 
-                :src="`https://flagcdn.com/w40/${currentFlag}.png`" 
-                :alt="currentLanguage" 
+                :src="`https://flagcdn.com/w40/${currentLanguage.flag}.png`" 
+                :alt="currentLanguage.label" 
                 class="w-6 h-4 object-cover rounded shadow-sm"
               />
-              <span class="text-secondary-800">{{ currentLanguage }}</span>
+              <span class="text-secondary-800">{{ currentLanguage.label }}</span>
               <i :class="[
                 'pi pi-chevron-down text-xs text-secondary-600 transition-transform duration-200',
                 isLanguageOpen ? 'rotate-180' : ''
@@ -192,18 +195,18 @@ if (typeof window !== 'undefined') {
                   @click="selectLanguage(lang)"
                   :class="[
                     'w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-colors duration-150',
-                    currentLanguage === lang.name 
+                    locale === lang.code 
                       ? 'bg-primary-50 text-primary-600' 
                       : 'text-secondary-700 hover:bg-secondary-50'
                   ]"
                 >
                   <img 
                     :src="`https://flagcdn.com/w40/${lang.flag}.png`" 
-                    :alt="lang.name" 
+                    :alt="lang.label" 
                     class="w-6 h-4 object-cover rounded shadow-sm"
                   />
-                  <span>{{ lang.name }}</span>
-                  <i v-if="currentLanguage === lang.name" class="pi pi-check text-primary-600 ml-auto text-sm"></i>
+                  <span>{{ lang.label }}</span>
+                  <i v-if="locale === lang.code" class="pi pi-check text-primary-600 ml-auto text-sm"></i>
                 </button>
               </div>
             </transition>
@@ -263,7 +266,6 @@ if (typeof window !== 'undefined') {
             <i class="pi pi-wrench text-xl text-primary-600 group-hover:text-white"></i>
           </div>
           <span class="flex-1 text-left">Services</span>
-          <!-- <i class="pi pi-chevron-down text-sm"></i> -->
         </router-link>
         
         <router-link
@@ -350,11 +352,11 @@ if (typeof window !== 'undefined') {
               class="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl bg-white border-2 border-secondary-200 hover:border-primary-400 hover:bg-primary-50 font-semibold text-sm transition-all shadow"
             >
               <img 
-                :src="`https://flagcdn.com/w40/${currentFlag}.png`" 
-                :alt="currentLanguage" 
+                :src="`https://flagcdn.com/w40/${currentLanguage.flag}.png`" 
+                :alt="currentLanguage.label" 
                 class="w-6 h-4 object-cover rounded shadow-sm"
               />
-              <span class="flex-1 text-left text-secondary-800">{{ currentLanguage }}</span>
+              <span class="flex-1 text-left text-secondary-800">{{ currentLanguage.label }}</span>
               <i :class="[
                 'pi pi-chevron-down text-xs text-secondary-600 transition-transform duration-200',
                 isLanguageOpen ? 'rotate-180' : ''
@@ -380,18 +382,18 @@ if (typeof window !== 'undefined') {
                   @click="selectLanguage(lang)"
                   :class="[
                     'w-full flex items-center gap-3 px-4 py-3 text-sm font-medium transition-colors duration-150',
-                    currentLanguage === lang.name 
+                    locale === lang.code 
                       ? 'bg-primary-50 text-primary-600' 
                       : 'text-secondary-700 hover:bg-secondary-50'
                   ]"
                 >
                   <img 
                     :src="`https://flagcdn.com/w40/${lang.flag}.png`" 
-                    :alt="lang.name" 
+                    :alt="lang.label" 
                     class="w-6 h-4 object-cover rounded shadow-sm"
                   />
-                  <span class="flex-1 text-left">{{ lang.name }}</span>
-                  <i v-if="currentLanguage === lang.name" class="pi pi-check text-primary-600 text-sm"></i>
+                  <span class="flex-1 text-left">{{ lang.label }}</span>
+                  <i v-if="locale === lang.code" class="pi pi-check text-primary-600 text-sm"></i>
                 </button>
               </div>
             </transition>

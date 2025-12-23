@@ -1,8 +1,19 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const typedText = ref('')
-const words = ['professional', 'stunning', 'modern', 'impactful']
+
+// Make words reactive to language changes
+const words = computed(() => [
+  t('hero.words.professional'),
+  t('hero.words.stunning'),
+  t('hero.words.modern'),
+  t('hero.words.impactful')
+])
+
 let wordIndex = 0
 let charIndex = 0
 let isDeleting = false
@@ -12,7 +23,7 @@ onMounted(() => {
 })
 
 const typeEffect = () => {
-  const currentWord = words[wordIndex]
+  const currentWord = words.value[wordIndex]
   
   if (isDeleting) {
     typedText.value = currentWord.substring(0, charIndex - 1)
@@ -26,7 +37,7 @@ const typeEffect = () => {
     setTimeout(() => isDeleting = true, 2000)
   } else if (isDeleting && charIndex === 0) {
     isDeleting = false
-    wordIndex = (wordIndex + 1) % words.length
+    wordIndex = (wordIndex + 1) % words.value.length
   }
   
   const speed = isDeleting ? 50 : 100
@@ -112,14 +123,14 @@ const typeEffect = () => {
 
           <!-- CTA Buttons -->
           <div class="flex flex-col sm:flex-row gap-4">
-            <button class="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold text-lg rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+            <button class="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold text-lg rounded-2xl shadow hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
               <span>Start your project</span>
-              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <!-- <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
+              </svg> -->
             </button>
 
-            <button class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white border-2 border-slate-300 hover:border-blue-500 text-slate-800 hover:text-blue-600 font-semibold text-lg rounded-2xl transition-all duration-300 shadow-md hover:shadow-lg">
+            <button class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white border-2 border-slate-300 hover:border-blue-500 text-slate-800 hover:text-blue-600 font-semibold text-lg rounded-2xl transition-all duration-300 shadow hover:shadow-lg">
               <span>View our work</span>
             </button>
           </div>
@@ -147,26 +158,26 @@ const typeEffect = () => {
           <div class="grid grid-cols-2 gap-4 h-[600px]">
             
             <!-- Top Left Card -->
-            <div class="bg-white/80 backdrop-blur-md rounded-3xl shadow p-6 border border-slate-200/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="bg-white/80 backdrop-blur-md rounded-3xl p-6 border border-slate-200/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div class="space-y-3">
                 <div class="w-14 h-14 bg-gradient-to-br from-emerald-100 to-emerald-50 rounded-2xl flex items-center justify-center shadow-sm">
                   <svg class="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
                   </svg>
                 </div>
-                <h3 class="text-xl font-bold text-slate-900">Starter</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">Perfect for small businesses</p>
+                <h3 class="text-xl font-bold text-slate-900">{{ t('hero.packages.starter') }}</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">{{ t('hero.packages.starterDesc') }}</p>
                 <div class="pt-1">
+                  <span class="text-slate-500 text-xs mr-1">{{ t('hero.packages.from') }}</span>
                   <span class="text-2xl font-black text-blue-600">GH₵2,500</span>
-                  <span class="text-slate-500 text-xs ml-1">from</span>
                 </div>
               </div>
             </div>
 
             <!-- Top Right Card - Tall -->
-            <div class="relative row-span-2 bg-gradient-to-br from-white/90 via-blue-50/40 to-white/90 backdrop-blur-md rounded-3xl shadow p-6 border-2 border-blue-200/50 hover:shadow-xl transition-all duration-300">
-              <div class="absolute -top-3 -right-3 bg-gradient-to-r from-amber-500 to-amber-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
-                POPULAR
+            <div class="relative row-span-2 bg-gradient-to-br from-white/90 via-blue-50/40 to-white/90 backdrop-blur-md rounded-3xl p-6 border-2 border-blue-200/50 hover:shadow-xl transition-all duration-300">
+              <div class="absolute -top-3 -right-3 bg-gradient-to-r from-amber-500 to-amber-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow">
+                {{ t('hero.packages.popular') }}
               </div>
               <div class="space-y-4 h-full flex flex-col justify-between">
                 <div>
@@ -175,29 +186,29 @@ const typeEffect = () => {
                       <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
                     </svg>
                   </div>
-                  <h3 class="text-2xl font-bold text-slate-900 mb-2">Business</h3>
-                  <p class="text-slate-600 leading-relaxed mb-4">Multi-page sites for growing companies</p>
+                  <h3 class="text-2xl font-bold text-slate-900 mb-2">{{ t('hero.packages.business') }}</h3>
+                  <p class="text-slate-600 leading-relaxed mb-4">{{ t('hero.packages.businessDesc') }}</p>
                 </div>
                 <div>
+                  <span class="text-slate-500 text-sm mr-2">{{ t('hero.packages.startingFrom') }}</span>
                   <span class="text-3xl font-black text-blue-600">GH₵4,500</span>
-                  <span class="text-slate-500 text-sm ml-2">starting from</span>
                 </div>
               </div>
             </div>
 
             <!-- Bottom Left Card -->
-            <div class="bg-white/80 backdrop-blur-md rounded-3xl shadow p-6 border border-slate-200/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="bg-white/80 backdrop-blur-md rounded-3xl p-6 border border-slate-200/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div class="space-y-3">
-                <div class="w-14 h-14 bg-gradient-to-br from-amber-100 to-amber-50 rounded-2xl flex items-center justify-center shadow-sm">
+                <div class="w-14 h-14 bg-gradient-to-br from-amber-100 to-amber-50 rounded-2xl flex items-center justify-center shadow">
                   <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
                   </svg>
                 </div>
-                <h3 class="text-xl font-bold text-slate-900">E-commerce</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">Full online stores</p>
+                <h3 class="text-xl font-bold text-slate-900">{{ t('hero.packages.ecommerce') }}</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">{{ t('hero.packages.ecommerceDesc') }}</p>
                 <div class="pt-1">
+                  <span class="text-slate-500 text-xs mr-1">{{ t('hero.packages.from') }}</span>
                   <span class="text-2xl font-black text-blue-600">GH₵6,000</span>
-                  <span class="text-slate-500 text-xs ml-1">from</span>
                 </div>
               </div>
             </div>
@@ -207,22 +218,22 @@ const typeEffect = () => {
 
         <!-- Mobile Card View -->
         <div class="lg:hidden">
-          <div class="bg-gradient-to-br from-white/90 via-blue-50/30 to-white/90 backdrop-blur-sm rounded-3xl shadow p-8 border-2 border-blue-200/50">
+          <div class="bg-gradient-to-br from-white/90 via-blue-50/30 to-white/90 backdrop-blur-sm rounded-3xl p-8 border-2 border-blue-200/50">
             <div class="flex items-center justify-between mb-4">
-              <div class="w-16 h-16 bg-gradient-to-br from-emerald-100 to-emerald-50 rounded-2xl flex items-center justify-center p-3 shadow-sm">
+              <div class="w-16 h-16 bg-gradient-to-br from-emerald-100 to-emerald-50 rounded-2xl flex items-center justify-center p-3 shadow">
                 <svg class="w-full h-full text-emerald-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
                 </svg>
               </div>
               <span class="bg-gradient-to-r from-amber-500 to-amber-600 text-white text-sm font-bold px-4 py-2 rounded-full">
-                POPULAR
+                {{ t('hero.packages.popular') }}
               </span>
             </div>
-            <h3 class="text-2xl font-bold text-slate-900 mb-2">Starter Package</h3>
-            <p class="text-slate-600 mb-4 leading-relaxed">Perfect for small businesses & startups</p>
+            <h3 class="text-2xl font-bold text-slate-900 mb-2">{{ t('hero.packages.starter') }}</h3>
+            <p class="text-slate-600 mb-4 leading-relaxed">{{ t('hero.packages.starterDesc') }}</p>
             <div>
+              <span class="text-slate-500 text-sm mr-2">{{ t('hero.packages.startingFrom') }}</span>
               <span class="text-4xl font-black text-blue-600">GH₵2,500</span>
-              <span class="text-slate-500 text-sm ml-2">starting from</span>
             </div>
           </div>
         </div>

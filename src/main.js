@@ -5,6 +5,7 @@ import { ViteSSG } from 'vite-ssg'
 import routes from './router/index.js'
 import App from './App.vue'
 import 'primeicons/primeicons.css'
+import i18n from './i18n'
 
 // const app = createApp(App)
 // const head = createHead()
@@ -27,6 +28,7 @@ export const createApp = ViteSSG(
   ({ app, router, routes,  initialState }) => {
     const head = createHead()
     app.use(head)
+    app.use(i18n)
  
   }
 )

@@ -15,10 +15,9 @@ const handleSubscribe = () => {
 }
 
 const quickLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'Services', href: '#services' },
-  { name: 'Portfolio', href: '#portfolio' },
-  { name: 'Pricing', href: '#pricing' },
+  { name: 'Services', href: '/services' },
+  { name: 'Portfolio', href: '/portfolio' },
+  { name: 'Pricing', href: '/pricing' },
   { name: 'About Us', href: '#about' },
   { name: 'Contact', href: '#contact' }
 ]
@@ -33,8 +32,8 @@ const services = [
 
 const socialLinks = [
   { icon: 'pi-facebook', href: '#', label: 'Facebook' },
-  { icon: 'pi-twitter', href: '#', label: 'Twitter' },
-  { icon: 'pi-instagram', href: '#', label: 'Instagram' },
+  { icon: 'pi-twitter', href: 'https://x.com/boltweb_gh', label: 'X' },
+  { icon: 'pi-instagram', href: 'https://instagram.com/boltweb.gh', label: 'Instagram' },
   { icon: 'pi-linkedin', href: '#', label: 'LinkedIn' },
   { icon: 'pi-whatsapp', href: '#', label: 'WhatsApp' }
 ]
