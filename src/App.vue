@@ -1,5 +1,7 @@
 <template>
-    <MainNavbar  @open-about="openAboutModal" />
+    <MainNavbar  @open-about="openAboutModal" 
+        @open-contact="showContactModal = true"
+    />
  <main>
     <RouterView />
       <Footer />
@@ -15,6 +17,11 @@
       :show="showAboutModal" 
       @close="closeAboutModal" 
     />
+      
+  <ContactModal 
+    :show="showContactModal" 
+    @close="showContactModal = false" 
+  />
   </main>
   <WhatsAppButton 
       phone-number="233552510654"
@@ -30,11 +37,14 @@ import Footer from './components/Footer.vue'
 import WhatsAppButton from './components/WhatsAppButton.vue'
 import ToastNotification from './components/ToastNotification.vue'
 import AboutModal from './components/AboutModal.vue'
+import ContactModal from './components/ContactModal.vue'
 import { useToast } from './composables/useToast'
 
 const { toastState, close } = useToast()
 
 const showAboutModal = ref(false)
+const showContactModal = ref(false)
+
 const openAboutModal = () => {
   showAboutModal.value = true
 }

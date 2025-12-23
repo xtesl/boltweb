@@ -13,6 +13,12 @@ import 'primeicons/primeicons.css'
 // app.use(head)
 // app.mount('#app')
 
+import '@fontsource/plus-jakarta-sans/300.css'
+import '@fontsource/plus-jakarta-sans/400.css'
+import '@fontsource/plus-jakarta-sans/500.css'
+import '@fontsource/plus-jakarta-sans/600.css'
+import '@fontsource/plus-jakarta-sans/700.css'
+
 import './style.css'
 
 export const createApp = ViteSSG(

@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue'
 
 const typedText = ref('')
-const words = ['Websites', 'Success', 'Results', 'Growth']
+const words = ['professional', 'stunning', 'modern', 'impactful']
 let wordIndex = 0
 let charIndex = 0
 let isDeleting = false
@@ -32,190 +32,198 @@ const typeEffect = () => {
   const speed = isDeleting ? 50 : 100
   setTimeout(typeEffect, speed)
 }
-
-const features = [
-  { icon: 'pi-bolt', text: '7-14 Days Delivery' },
-  { icon: 'pi-shield', text: '100% Guarantee' },
-  { icon: 'pi-mobile', text: 'Mobile Money' }
-]
 </script>
 
 <template>
-  <section class="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-white via-secondary-50 to-primary-50">
+  <section class="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50/20">
     
-    <!-- Animated Mesh Gradient Background -->
-    <div class="absolute inset-0 opacity-30">
-      <div class="absolute top-0 -left-4 w-96 h-96 bg-primary-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-      <div class="absolute top-0 -right-4 w-96 h-96 bg-accent-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-      <div class="absolute -bottom-8 left-20 w-96 h-96 bg-primary-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+    <!-- Subtle Grid Pattern Background -->
+    <div class="absolute inset-0 opacity-[0.03]">
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="currentColor" stroke-width="0.5" class="text-slate-900"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)" />
+      </svg>
     </div>
 
-    <!-- Dot Pattern Overlay -->
-    <div class="absolute inset-0 bg-dot-pattern opacity-20"></div>
+    <!-- Animated Gradient Orbs - Subtle -->
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-400/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+      <div class="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-purple-400/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+      <div class="absolute bottom-1/4 left-1/3 w-[450px] h-[450px] bg-amber-400/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+    </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
+    <!-- Floating Geometric Shapes -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <!-- Top Left Square -->
+      <div class="absolute top-20 left-10 w-20 h-20 border-2 border-blue-200/40 rounded-lg rotate-12 animate-float"></div>
+      
+      <!-- Top Right Circle -->
+      <div class="absolute top-32 right-20 w-16 h-16 border-2 border-amber-200/40 rounded-full animate-float-delayed"></div>
+      
+      <!-- Bottom Right Triangle -->
+      <div class="absolute bottom-40 right-40 w-0 h-0 border-l-[30px] border-l-transparent border-r-[30px] border-r-transparent border-b-[50px] border-b-blue-200/30 animate-float"></div>
+      
+      <!-- Bottom Left Diamond -->
+      <div class="absolute bottom-20 left-32 w-12 h-12 border-2 border-purple-200/40 rotate-45 animate-float-delayed"></div>
+    </div>
+
+    <!-- Subtle Dot Pattern -->
+    <div class="absolute inset-0 opacity-[0.015]">
+      <svg width="100%" height="100%">
+        <defs>
+          <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1.5" fill="currentColor" class="text-slate-900"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#dots)"/>
+      </svg>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
         
         <!-- Left Content -->
-        <div class="text-left">
+        <div class="text-left space-y-8">
           
-          <!-- Launch Badge -->
-          <div class="inline-flex items-center gap-2 bg-gradient-to-r from-accent-100 to-primary-100 border border-accent-200 text-accent-700 px-4 py-2 
-          rounded-md text-sm font-bold mb-6">
-            <i class="pi pi-sparkles"></i>
-            <span>New Launch • Special Offer Inside</span>
-          </div>
+          <!-- Main Headline -->
+          <div class="space-y-6">
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black text-slate-900 leading-tight">
+              We create
+              <br />
+              <span class="relative inline-block">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-amber-500">
+                  {{ typedText }}
+                </span>
+                <span class="inline-block w-1 h-14 lg:h-16 bg-amber-500 ml-1 animate-pulse"></span>
+              </span>
+              <br />
+              websites
+            </h1>
 
-          <!-- Main Headline with Typing Effect -->
-          <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black text-secondary-900 mb-6 leading-tight">
-            Build Fast.
-            <br />
-            Launch <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-500">{{ typedText }}</span>
-            <span class="inline-block w-1 h-16 bg-accent-500 ml-1 animate-pulse"></span>
-          </h1>
-
-          <!-- Subheading -->
-          <p class="text-xl text-secondary-600 mb-8 leading-relaxed max-w-xl">
-            Professional websites for Ghanaian businesses delivered in <span class="font-bold text-primary-600">7-14 days</span>. No hidden fees. No hassle. Just results.
-          </p>
-
-          <!-- Feature Pills -->
-          <div class="flex flex-wrap gap-3 mb-8">
-            <div 
-              v-for="feature in features" 
-              :key="feature.text"
-              class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded text-sm font-semibold text-secondary-700 border border-secondary-200"
-            >
-              <i :class="['pi text-primary-600', feature.icon]"></i>
-              <span>{{ feature.text }}</span>
-            </div>
+            <p class="text-xl lg:text-2xl text-slate-600 leading-relaxed max-w-xl">
+              Transform your business online with websites that drive real results. Built for Ghana, designed for growth.
+            </p>
           </div>
 
           <!-- CTA Buttons -->
-          <div class="flex flex-col sm:flex-row gap-4 mb-8">
-            <button class="group relative overflow-hidden bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105 flex items-center justify-center gap-2">
-              <i class="pi pi-bolt text-xl"></i>
-              <span>Get Your Free Quote</span>
-              <i class="pi pi-arrow-right group-hover:translate-x-1 transition-transform"></i>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button class="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold text-lg rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+              <span>Start your project</span>
+              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
             </button>
-            
-            <button class="bg-white hover:bg-secondary-50 text-secondary-800 font-bold px-8 py-4 rounded-xl transition-all duration-300 border-2 border-secondary-200 hover:border-primary-300 flex items-center justify-center gap-2 shadow hover:shadow-lg">
-              <i class="pi pi-whatsapp text-green-600 text-xl"></i>
-              <span>WhatsApp Us</span>
+
+            <button class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white border-2 border-slate-300 hover:border-blue-500 text-slate-800 hover:text-blue-600 font-semibold text-lg rounded-2xl transition-all duration-300 shadow-md hover:shadow-lg">
+              <span>View our work</span>
             </button>
           </div>
 
-          <!-- Trust Bar -->
-          <div class="flex items-center gap-8 text-sm text-secondary-600">
-            <div class="flex items-center gap-2">
-              <div class="flex -space-x-2">
-                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 border-2 border-white"></div>
-                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-accent-400 to-accent-600 border-2 border-white"></div>
-                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-secondary-400 to-secondary-600 border-2 border-white"></div>
-              </div>
-              <span class="font-semibold">Join 20+ businesses</span>
+          <!-- Trust Indicators -->
+          <div class="flex items-center gap-8 pt-4">
+            <div class="flex items-center gap-2 text-slate-600">
+              <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span class="font-semibold">Fast delivery</span>
             </div>
-            <div class="flex items-center gap-1">
-              <i class="pi pi-star-fill text-accent-500"></i>
-              <i class="pi pi-star-fill text-accent-500"></i>
-              <i class="pi pi-star-fill text-accent-500"></i>
-              <i class="pi pi-star-fill text-accent-500"></i>
-              <i class="pi pi-star-fill text-accent-500"></i>
-              <span class="ml-1 font-semibold">5.0 Rating</span>
+            <div class="flex items-center gap-2 text-slate-600">
+              <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span class="font-semibold">Transparent pricing</span>
             </div>
           </div>
 
         </div>
 
-        <!-- Right Visual -->
+        <!-- Right Visual - Bento Grid Style Cards -->
         <div class="relative hidden lg:block">
-          <!-- Floating Cards Stack -->
-          <div class="relative h-[600px]">
+          <div class="grid grid-cols-2 gap-4 h-[600px]">
             
-            <!-- Card 3 (Back) -->
-            <div class="absolute top-20 right-0 w-80 bg-white rounded-2xl shadow-2xl p-6 transform rotate-6 hover:rotate-3 transition-transform duration-500 border border-secondary-100">
-              <div class="flex items-center gap-3 mb-4">
-                <div class="w-12 h-12 bg-gradient-to-br from-accent-400 to-accent-600 rounded-xl flex items-center justify-center">
-                  <i class="pi pi-shopping-cart text-white text-xl"></i>
+            <!-- Top Left Card -->
+            <div class="bg-white/80 backdrop-blur-md rounded-3xl shadow p-6 border border-slate-200/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div class="space-y-3">
+                <div class="w-14 h-14 bg-gradient-to-br from-emerald-100 to-emerald-50 rounded-2xl flex items-center justify-center shadow-sm">
+                  <svg class="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+                  </svg>
                 </div>
-                <div>
-                  <h3 class="font-bold text-secondary-900">E-commerce</h3>
-                  <p class="text-sm text-secondary-600">From GH₵6,000</p>
-                </div>
-              </div>
-              <div class="space-y-2">
-                <div class="flex items-center gap-2 text-sm text-secondary-700">
-                  <i class="pi pi-check-circle text-green-600"></i>
-                  <span>Payment Integration</span>
-                </div>
-                <div class="flex items-center gap-2 text-sm text-secondary-700">
-                  <i class="pi pi-check-circle text-green-600"></i>
-                  <span>Product Management</span>
-                </div>
-                <div class="flex items-center gap-2 text-sm text-secondary-700">
-                  <i class="pi pi-check-circle text-green-600"></i>
-                  <span>Mobile Money</span>
+                <h3 class="text-xl font-bold text-slate-900">Starter</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">Perfect for small businesses</p>
+                <div class="pt-1">
+                  <span class="text-2xl font-black text-blue-600">GH₵2,500</span>
+                  <span class="text-slate-500 text-xs ml-1">from</span>
                 </div>
               </div>
             </div>
 
-            <!-- Card 2 (Middle) -->
-            <div class="absolute top-10 right-10 w-80 bg-white rounded-2xl shadow-2xl p-6 transform rotate-3 hover:rotate-1 transition-transform duration-500 border border-secondary-100">
-              <div class="flex items-center gap-3 mb-4">
-                <div class="w-12 h-12 bg-gradient-to-br from-primary-400 to-primary-600 rounded-xl flex items-center justify-center">
-                  <i class="pi pi-briefcase text-white text-xl"></i>
-                </div>
-                <div>
-                  <h3 class="font-bold text-secondary-900">Professional</h3>
-                  <p class="text-sm text-secondary-600">From GH₵4,500</p>
-                </div>
-              </div>
-              <div class="space-y-2">
-                <div class="flex items-center gap-2 text-sm text-secondary-700">
-                  <i class="pi pi-check-circle text-green-600"></i>
-                  <span>5-8 Pages</span>
-                </div>
-                <div class="flex items-center gap-2 text-sm text-secondary-700">
-                  <i class="pi pi-check-circle text-green-600"></i>
-                  <span>SEO Optimized</span>
-                </div>
-                <div class="flex items-center gap-2 text-sm text-secondary-700">
-                  <i class="pi pi-check-circle text-green-600"></i>
-                  <span>Free Hosting</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 1 (Front) - Most Popular -->
-            <div class="absolute top-0 right-20 w-80 bg-gradient-to-br from-white to-primary-50 rounded-2xl shadow-2xl p-6 transform hover:scale-105 transition-transform duration-500 border-2 border-primary-300">
-              <div class="absolute -top-3 -right-3 bg-accent-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+            <!-- Top Right Card - Tall -->
+            <div class="relative row-span-2 bg-gradient-to-br from-white/90 via-blue-50/40 to-white/90 backdrop-blur-md rounded-3xl shadow p-6 border-2 border-blue-200/50 hover:shadow-xl transition-all duration-300">
+              <div class="absolute -top-3 -right-3 bg-gradient-to-r from-amber-500 to-amber-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
                 POPULAR
               </div>
-              <div class="flex items-center gap-3 mb-4">
-                <div class="w-12 h-12 bg-gradient-to-br from-accent-400 to-accent-600 rounded-xl flex items-center justify-center">
-                  <i class="pi pi-bolt text-white text-xl"></i>
+              <div class="space-y-4 h-full flex flex-col justify-between">
+                <div>
+                  <div class="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-50 rounded-2xl flex items-center justify-center shadow-sm mb-4">
+                    <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
+                    </svg>
+                  </div>
+                  <h3 class="text-2xl font-bold text-slate-900 mb-2">Business</h3>
+                  <p class="text-slate-600 leading-relaxed mb-4">Multi-page sites for growing companies</p>
                 </div>
                 <div>
-                  <h3 class="font-bold text-secondary-900">Starter</h3>
-                  <p class="text-sm text-secondary-600">From GH₵2,500</p>
-                </div>
-              </div>
-              <div class="space-y-2">
-                <div class="flex items-center gap-2 text-sm text-secondary-700">
-                  <i class="pi pi-check-circle text-green-600"></i>
-                  <span>1-3 Pages</span>
-                </div>
-                <div class="flex items-center gap-2 text-sm text-secondary-700">
-                  <i class="pi pi-check-circle text-green-600"></i>
-                  <span>Mobile Responsive</span>
-                </div>
-                <div class="flex items-center gap-2 text-sm text-secondary-700">
-                  <i class="pi pi-check-circle text-green-600"></i>
-                  <span>7-10 Days</span>
+                  <span class="text-3xl font-black text-blue-600">GH₵4,500</span>
+                  <span class="text-slate-500 text-sm ml-2">starting from</span>
                 </div>
               </div>
             </div>
 
+            <!-- Bottom Left Card -->
+            <div class="bg-white/80 backdrop-blur-md rounded-3xl shadow p-6 border border-slate-200/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div class="space-y-3">
+                <div class="w-14 h-14 bg-gradient-to-br from-amber-100 to-amber-50 rounded-2xl flex items-center justify-center shadow-sm">
+                  <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">E-commerce</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">Full online stores</p>
+                <div class="pt-1">
+                  <span class="text-2xl font-black text-blue-600">GH₵6,000</span>
+                  <span class="text-slate-500 text-xs ml-1">from</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Mobile Card View -->
+        <div class="lg:hidden">
+          <div class="bg-gradient-to-br from-white/90 via-blue-50/30 to-white/90 backdrop-blur-sm rounded-3xl shadow p-8 border-2 border-blue-200/50">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-16 h-16 bg-gradient-to-br from-emerald-100 to-emerald-50 rounded-2xl flex items-center justify-center p-3 shadow-sm">
+                <svg class="w-full h-full text-emerald-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+                </svg>
+              </div>
+              <span class="bg-gradient-to-r from-amber-500 to-amber-600 text-white text-sm font-bold px-4 py-2 rounded-full">
+                POPULAR
+              </span>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 mb-2">Starter Package</h3>
+            <p class="text-slate-600 mb-4 leading-relaxed">Perfect for small businesses & startups</p>
+            <div>
+              <span class="text-4xl font-black text-blue-600">GH₵2,500</span>
+              <span class="text-slate-500 text-sm ml-2">starting from</span>
+            </div>
           </div>
         </div>
 
@@ -225,13 +233,6 @@ const features = [
 </template>
 
 <style scoped>
-/* Dot pattern background */
-.bg-dot-pattern {
-  background-image: radial-gradient(circle, rgb(37 99 235 / 0.15) 1px, transparent 1px);
-  background-size: 20px 20px;
-}
-
-/* Blob animations */
 @keyframes blob {
   0%, 100% {
     transform: translate(0, 0) scale(1);
@@ -244,8 +245,17 @@ const features = [
   }
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
 .animate-blob {
-  animation: blob 7s infinite;
+  animation: blob 15s infinite;
 }
 
 .animation-delay-2000 {
@@ -254,5 +264,14 @@ const features = [
 
 .animation-delay-4000 {
   animation-delay: 4s;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 8s ease-in-out infinite;
+  animation-delay: 1s;
 }
 </style>

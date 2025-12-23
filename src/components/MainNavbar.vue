@@ -6,8 +6,29 @@ const router = useRouter()
 const route = useRoute()
 const isMenuOpen = ref(false)
 const isScrolled = ref(false)
+const isServicesOpen = ref(false)
+const isLanguageOpen = ref(false)
+const currentLanguage = ref('English')
+const currentFlag = ref('us')
 
-defineEmits(['open-about'])
+const languages = [
+  { code: 'en', name: 'English', flag: 'us' },
+  { code: 'fr', name: 'Français', flag: 'fr' },
+  { code: 'es', name: 'Español', flag: 'es' },
+  { code: 'de', name: 'Deutsch', flag: 'de' },
+]
+
+const toggleLanguage = () => {
+  isLanguageOpen.value = !isLanguageOpen.value
+}
+
+const selectLanguage = (lang) => {
+  currentLanguage.value = lang.name
+  currentFlag.value = lang.flag
+  isLanguageOpen.value = false
+}
+
+const emit = defineEmits(['open-about', 'open-contact', 'open-services'])
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
@@ -15,6 +36,21 @@ const toggleMenu = () => {
 
 const closeMenu = () => {
   isMenuOpen.value = false
+}
+
+const openContact = () => {
+   closeMenu()
+   emit('open-contact')
+}
+
+const openAbout = () => {
+  closeMenu()
+  emit('open-about')
+}
+
+const openServices = () => {
+  closeMenu()
+  emit('open-services')
 }
 
 const navigateTo = (path) => {
@@ -45,7 +81,7 @@ if (typeof window !== 'undefined') {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-20">
         
-        <!-- Logo with Animation -->
+        <!-- Logo with Tagline -->
         <div class="flex-shrink-0 flex items-center cursor-pointer group" @click="navigateTo('/')">
           <div class="relative">
             <img
@@ -56,7 +92,7 @@ if (typeof window !== 'undefined') {
             <div class="absolute -top-1 -right-1 w-3 h-3 bg-primary-600 rounded-full animate-pulse"></div>
           </div>
           <div class="ml-3">
-            <span class="text-3xl font-black text-secondary-800 tracking-tight">
+            <span class="text-2xl font-black text-secondary-800 tracking-tight">
               Bolt<span class="text-accent-500">Web</span>
             </span>
             <div class="text-xs text-secondary-500 font-medium -mt-1">Lightning Fast Websites</div>
@@ -65,120 +101,116 @@ if (typeof window !== 'undefined') {
 
         <!-- Desktop Navigation -->
         <div class="hidden lg:flex items-center space-x-1">
-          <router-link 
-            to="/" 
-            :class="[
-              'group px-4 py-2 rounded-lg font-semibold transition-all duration-200 flex items-center gap-2',
-              isActive('/') 
-                ? 'bg-primary-600 text-white' 
-                : 'text-secondary-700 hover:text-primary-600 hover:bg-primary-50'
-            ]"
+          <!-- Services Dropdown -->
+          <router-link
+            :to="'/services'"
+            class="group px-5 py-2.5 rounded-lg text-secondary-800 hover:text-primary-600 hover:bg-primary-50 font-semibold text-base transition-all duration-200 flex items-center gap-2"
           >
-            <i :class="[
-              'pi pi-home text-lg transition-transform',
-              isActive('/') ? '' : 'group-hover:scale-110'
-            ]"></i>
-            Home
-          </router-link>
-
-          <router-link 
-            to="/services" 
-            :class="[
-              'group px-4 py-2 rounded-lg font-semibold transition-all duration-200 flex items-center gap-2',
-              isActive('/services') 
-                ? 'bg-primary-600 text-white' 
-                : 'text-secondary-700 hover:text-primary-600 hover:bg-primary-50'
-            ]"
-          >
-            <i :class="[
-              'pi pi-wrench text-lg transition-transform',
-              isActive('/services') ? '' : 'group-hover:scale-110'
-            ]"></i>
-            Services
-          </router-link>
+            <span>Services</span>
+            <!-- <i class="pi pi-chevron-down text-xs group-hover:translate-y-0.5 transition-transform"></i> -->
+        </router-link>
 
           <router-link 
             to="/portfolio" 
             :class="[
-              'group px-4 py-2 rounded-lg font-semibold transition-all duration-200 flex items-center gap-2',
+              'group px-5 py-2.5 rounded-lg font-semibold text-base transition-all duration-200',
               isActive('/portfolio') 
                 ? 'bg-primary-600 text-white' 
-                : 'text-secondary-700 hover:text-primary-600 hover:bg-primary-50'
+                : 'text-secondary-800 hover:text-primary-600 hover:bg-primary-50'
             ]"
           >
-            <i :class="[
-              'pi pi-images text-lg transition-transform',
-              isActive('/portfolio') ? '' : 'group-hover:scale-110'
-            ]"></i>
             Portfolio
           </router-link>
 
           <router-link 
             to="/pricing" 
             :class="[
-              'group px-4 py-2 rounded-lg font-semibold transition-all duration-200 flex items-center gap-2',
+              'group px-5 py-2.5 rounded-lg font-semibold text-base transition-all duration-200',
               isActive('/pricing') 
                 ? 'bg-primary-600 text-white' 
-                : 'text-secondary-700 hover:text-primary-600 hover:bg-primary-50'
+                : 'text-secondary-800 hover:text-primary-600 hover:bg-primary-50'
             ]"
           >
-            <i :class="[
-              'pi pi-tag text-lg transition-transform',
-              isActive('/pricing') ? '' : 'group-hover:scale-110'
-            ]"></i>
             Pricing
           </router-link>
 
-          <!-- <router-link 
-            to="/about" 
-            :class="[
-              'group px-4 py-2 rounded-lg font-semibold transition-all duration-200 flex items-center gap-2',
-              isActive('/about') 
-                ? 'bg-primary-600 text-white' 
-                : 'text-secondary-700 hover:text-primary-600 hover:bg-primary-50'
-            ]"
-          >
-            <i :class="[
-              'pi pi-info-circle text-lg transition-transform',
-              isActive('/about') ? '' : 'group-hover:scale-110'
-            ]"></i>
-            About
-          </router-link> -->
+          <!-- About Dropdown -->
           <button 
-  @click="$emit('open-about')"
-  class="group px-4 py-2 rounded-lg text-secondary-700 hover:text-primary-600 hover:bg-primary-50 font-semibold transition-all duration-200 flex items-center gap-2"
->
-  <i class="pi pi-info-circle text-lg group-hover:scale-110 transition-transform"></i>
-  About
-</button>
-
-          <router-link 
-            to="/contact" 
-            :class="[
-              'group px-4 py-2 rounded-lg font-semibold transition-all duration-200 flex items-center gap-2',
-              isActive('/contact') 
-                ? 'bg-primary-600 text-white' 
-                : 'text-secondary-700 hover:text-primary-600 hover:bg-primary-50'
-            ]"
+            @click="openAbout"
+            class="group px-5 py-2.5 rounded-lg text-secondary-800 hover:text-primary-600 hover:bg-primary-50 font-semibold text-base transition-all duration-200 flex items-center gap-2"
           >
-            <i :class="[
-              'pi pi-envelope text-lg transition-transform',
-              isActive('/contact') ? '' : 'group-hover:scale-110'
-            ]"></i>
-            Contact
-          </router-link>
-        </div>
+            <span>About</span>
+            <i class="pi pi-chevron-down text-xs group-hover:translate-y-0.5 transition-transform"></i>
+          </button>
 
-        <!-- CTA Button (Desktop) -->
-        <div class="hidden lg:flex items-center gap-3">
-          <button class="group relative overflow-hidden bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white font-bold px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center gap-2">
-            <i class="pi pi-bolt text-lg"></i>
-            <span>Get Free Quote</span>
-            <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+          <!-- Contact Dropdown -->
+          <button 
+            @click="openContact"
+            class="group px-5 py-2.5 rounded-lg text-secondary-800 hover:text-primary-600 hover:bg-primary-50 font-semibold text-base transition-all duration-200 flex items-center gap-2"
+          >
+            <span>Contact</span>
+            <i class="pi pi-chevron-down text-xs group-hover:translate-y-0.5 transition-transform"></i>
           </button>
         </div>
 
-        <!-- Modern Mobile Menu Button (Panel Style) -->
+        <!-- Right Side - Language Selector Only -->
+        <div class="hidden lg:flex items-center">
+          <!-- Language Selector Dropdown -->
+          <div class="relative">
+            <button 
+              @click="toggleLanguage"
+              class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white border-2 border-secondary-200 hover:border-primary-400 hover:bg-primary-50 font-semibold text-sm transition-all duration-200 shadow hover:shadow-md"
+            >
+              <img 
+                :src="`https://flagcdn.com/w40/${currentFlag}.png`" 
+                :alt="currentLanguage" 
+                class="w-6 h-4 object-cover rounded shadow-sm"
+              />
+              <span class="text-secondary-800">{{ currentLanguage }}</span>
+              <i :class="[
+                'pi pi-chevron-down text-xs text-secondary-600 transition-transform duration-200',
+                isLanguageOpen ? 'rotate-180' : ''
+              ]"></i>
+            </button>
+
+            <!-- Language Dropdown Menu -->
+            <transition
+              enter-active-class="transition ease-out duration-200"
+              enter-from-class="opacity-0 translate-y-1"
+              enter-to-class="opacity-100 translate-y-0"
+              leave-active-class="transition ease-in duration-150"
+              leave-from-class="opacity-100 translate-y-0"
+              leave-to-class="opacity-0 translate-y-1"
+            >
+              <div 
+                v-if="isLanguageOpen"
+                class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-secondary-200 py-2 z-50"
+              >
+                <button
+                  v-for="lang in languages"
+                  :key="lang.code"
+                  @click="selectLanguage(lang)"
+                  :class="[
+                    'w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-colors duration-150',
+                    currentLanguage === lang.name 
+                      ? 'bg-primary-50 text-primary-600' 
+                      : 'text-secondary-700 hover:bg-secondary-50'
+                  ]"
+                >
+                  <img 
+                    :src="`https://flagcdn.com/w40/${lang.flag}.png`" 
+                    :alt="lang.name" 
+                    class="w-6 h-4 object-cover rounded shadow-sm"
+                  />
+                  <span>{{ lang.name }}</span>
+                  <i v-if="currentLanguage === lang.name" class="pi pi-check text-primary-600 ml-auto text-sm"></i>
+                </button>
+              </div>
+            </transition>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Button -->
         <div class="lg:hidden">
           <button 
             @click="toggleMenu"
@@ -222,66 +254,26 @@ if (typeof window !== 'undefined') {
       ]"
     >
       <div class="bg-gradient-to-b from-secondary-50 to-white border-t border-secondary-200 px-4 py-6 space-y-2">
+        <!-- Services -->
         <router-link
-          to="/" 
-          @click="closeMenu"
-          :class="[
-            'group flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold transition-all duration-200 transform',
-            isActive('/') 
-              ? 'bg-primary-600 text-white translate-x-2' 
-              : 'text-secondary-700 hover:bg-primary-600 hover:text-white hover:translate-x-2'
-          ]"
+          :to="'/services'"
+          class="group flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold text-base transition-all duration-200 transform text-secondary-800 hover:bg-primary-600 hover:text-white hover:translate-x-2 w-full"
         >
-          <div :class="[
-            'w-10 h-10 rounded-lg flex items-center justify-center transition-colors',
-            isActive('/') 
-              ? 'bg-white/20' 
-              : 'bg-primary-50 group-hover:bg-white/20'
-          ]">
-            <i :class="[
-              'pi pi-home text-xl',
-              isActive('/') 
-                ? 'text-white' 
-                : 'text-primary-600 group-hover:text-white'
-            ]"></i>
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center transition-colors bg-primary-50 group-hover:bg-white/20">
+            <i class="pi pi-wrench text-xl text-primary-600 group-hover:text-white"></i>
           </div>
-          <span>Home</span>
-        </router-link>
-        
-        <router-link
-          to="/services" 
-          @click="closeMenu"
-          :class="[
-            'group flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold transition-all duration-200 transform',
-            isActive('/services') 
-              ? 'bg-primary-600 text-white translate-x-2' 
-              : 'text-secondary-700 hover:bg-primary-600 hover:text-white hover:translate-x-2'
-          ]"
-        >
-          <div :class="[
-            'w-10 h-10 rounded-lg flex items-center justify-center transition-colors',
-            isActive('/services') 
-              ? 'bg-white/20' 
-              : 'bg-primary-50 group-hover:bg-white/20'
-          ]">
-            <i :class="[
-              'pi pi-wrench text-xl',
-              isActive('/services') 
-                ? 'text-white' 
-                : 'text-primary-600 group-hover:text-white'
-            ]"></i>
-          </div>
-          <span>Services</span>
+          <span class="flex-1 text-left">Services</span>
+          <!-- <i class="pi pi-chevron-down text-sm"></i> -->
         </router-link>
         
         <router-link
           to="/portfolio" 
           @click="closeMenu"
           :class="[
-            'group flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold transition-all duration-200 transform',
+            'group flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold text-base transition-all duration-200 transform',
             isActive('/portfolio') 
               ? 'bg-primary-600 text-white translate-x-2' 
-              : 'text-secondary-700 hover:bg-primary-600 hover:text-white hover:translate-x-2'
+              : 'text-secondary-800 hover:bg-primary-600 hover:text-white hover:translate-x-2'
           ]"
         >
           <div :class="[
@@ -304,10 +296,10 @@ if (typeof window !== 'undefined') {
           to="/pricing" 
           @click="closeMenu"
           :class="[
-            'group flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold transition-all duration-200 transform',
+            'group flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold text-base transition-all duration-200 transform',
             isActive('/pricing') 
               ? 'bg-primary-600 text-white translate-x-2' 
-              : 'text-secondary-700 hover:bg-primary-600 hover:text-white hover:translate-x-2'
+              : 'text-secondary-800 hover:bg-primary-600 hover:text-white hover:translate-x-2'
           ]"
         >
           <div :class="[
@@ -326,78 +318,84 @@ if (typeof window !== 'undefined') {
           <span>Pricing</span>
         </router-link>
         
-        <!-- <router-link
-          to="/about" 
-          @click="closeMenu"
-          :class="[
-            'group flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold transition-all duration-200 transform',
-            isActive('/about') 
-              ? 'bg-primary-600 text-white translate-x-2' 
-              : 'text-secondary-700 hover:bg-primary-600 hover:text-white hover:translate-x-2'
-          ]"
+        <!-- About -->
+        <button
+          @click="openAbout"
+          class="group flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold text-base transition-all duration-200 transform text-secondary-800 hover:bg-primary-600 hover:text-white hover:translate-x-2 w-full"
         >
-          <div :class="[
-            'w-10 h-10 rounded-lg flex items-center justify-center transition-colors',
-            isActive('/about') 
-              ? 'bg-white/20' 
-              : 'bg-primary-50 group-hover:bg-white/20'
-          ]">
-            <i :class="[
-              'pi pi-info-circle text-xl',
-              isActive('/about') 
-                ? 'text-white' 
-                : 'text-primary-600 group-hover:text-white'
-            ]"></i>
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center transition-colors bg-primary-50 group-hover:bg-white/20">
+            <i class="pi pi-info-circle text-xl text-primary-600 group-hover:text-white"></i>
           </div>
-          <span>About</span>
-        </router-link> -->
-                <button 
-  @click="$emit('open-about')"
-  :class="[
-            'group flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold transition-all duration-200 transform',
-            isActive('/about') 
-              ? 'bg-primary-600 text-white translate-x-2' 
-              : 'text-secondary-700 hover:bg-primary-600 hover:text-white hover:translate-x-2'
-      ]"
->
+          <span class="flex-1 text-left">About</span>
+          <i class="pi pi-chevron-down text-sm"></i>
+        </button>
+  
+        <!-- Contact -->
+        <button
+          @click="openContact"
+          class="group flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold text-base transition-all duration-200 transform text-secondary-800 hover:bg-primary-600 hover:text-white hover:translate-x-2 w-full"
+        >
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center transition-colors bg-primary-50 group-hover:bg-white/20">
+            <i class="pi pi-envelope text-xl text-primary-600 group-hover:text-white"></i>
+          </div>
+          <span class="flex-1 text-left">Contact</span>
+          <i class="pi pi-chevron-down text-sm"></i>
+        </button>
+        
+        <!-- Mobile Language Selector -->
+        <div class="pt-4 mt-4 border-t border-secondary-200">
+          <div class="relative">
+            <button 
+              @click="toggleLanguage"
+              class="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl bg-white border-2 border-secondary-200 hover:border-primary-400 hover:bg-primary-50 font-semibold text-sm transition-all shadow"
+            >
+              <img 
+                :src="`https://flagcdn.com/w40/${currentFlag}.png`" 
+                :alt="currentLanguage" 
+                class="w-6 h-4 object-cover rounded shadow-sm"
+              />
+              <span class="flex-1 text-left text-secondary-800">{{ currentLanguage }}</span>
+              <i :class="[
+                'pi pi-chevron-down text-xs text-secondary-600 transition-transform duration-200',
+                isLanguageOpen ? 'rotate-180' : ''
+              ]"></i>
+            </button>
 
-  <i class="w-10 h-10 pi pi-info-circle text-primary-600 group-hover:text-white bg-primary-50 
-  group-hover:bg-white/20 text-xl rounded-lg flex items-center justify-center group-hover:scale-110 transition-colors"></i>
-  About
-</button>
-        
-        <router-link
-          to="/contact" 
-          @click="closeMenu"
-          :class="[
-            'group flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold transition-all duration-200 transform',
-            isActive('/contact') 
-              ? 'bg-primary-600 text-white translate-x-2' 
-              : 'text-secondary-700 hover:bg-primary-600 hover:text-white hover:translate-x-2'
-          ]"
-        >
-          <div :class="[
-            'w-10 h-10 rounded-lg flex items-center justify-center transition-colors',
-            isActive('/contact') 
-              ? 'bg-white/20' 
-              : 'bg-primary-50 group-hover:bg-white/20'
-          ]">
-            <i :class="[
-              'pi pi-envelope text-xl',
-              isActive('/contact') 
-                ? 'text-white' 
-                : 'text-primary-600 group-hover:text-white'
-            ]"></i>
+            <!-- Mobile Language Dropdown -->
+            <transition
+              enter-active-class="transition ease-out duration-200"
+              enter-from-class="opacity-0 -translate-y-1"
+              enter-to-class="opacity-100 translate-y-0"
+              leave-active-class="transition ease-in duration-150"
+              leave-from-class="opacity-100 translate-y-0"
+              leave-to-class="opacity-0 -translate-y-1"
+            >
+              <div 
+                v-if="isLanguageOpen"
+                class="mt-2 bg-white rounded-xl shadow-lg border border-secondary-200 py-2"
+              >
+                <button
+                  v-for="lang in languages"
+                  :key="lang.code"
+                  @click="selectLanguage(lang)"
+                  :class="[
+                    'w-full flex items-center gap-3 px-4 py-3 text-sm font-medium transition-colors duration-150',
+                    currentLanguage === lang.name 
+                      ? 'bg-primary-50 text-primary-600' 
+                      : 'text-secondary-700 hover:bg-secondary-50'
+                  ]"
+                >
+                  <img 
+                    :src="`https://flagcdn.com/w40/${lang.flag}.png`" 
+                    :alt="lang.name" 
+                    class="w-6 h-4 object-cover rounded shadow-sm"
+                  />
+                  <span class="flex-1 text-left">{{ lang.name }}</span>
+                  <i v-if="currentLanguage === lang.name" class="pi pi-check text-primary-600 text-sm"></i>
+                </button>
+              </div>
+            </transition>
           </div>
-          <span>Contact</span>
-        </router-link>
-        
-        <!-- Mobile CTA Button -->
-        <div class="pt-4">
-          <button class="w-full bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white font-bold px-6 py-4 rounded-xl transition-all duration-200 shadow-lg flex items-center justify-center gap-2">
-            <i class="pi pi-bolt text-xl"></i>
-            <span>Get Free Quote</span>
-          </button>
         </div>
       </div>
     </div>
