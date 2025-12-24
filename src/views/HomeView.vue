@@ -30,7 +30,7 @@
       <Pricing @open-contact="emit('open-contact')"/>
     </div>
     <FAQsSection @open-contact="emit('open-contact')"/>
-    <TeamSection />
+    <!-- <TeamSection /> -->
     <Workflow @open-contact="emit('open-contact')"/>
   </div>
 </template>
