@@ -17,8 +17,7 @@ const packages = [
     features: [
       '1-3 Pages',
       'Mobile Responsive',
-      'Free Domain (1 Year)',
-      'Free Hosting (1 Year)',
+   
       'Contact Form',
       'Social Media Links',
       'Basic SEO Setup',
@@ -36,7 +35,6 @@ const packages = [
     features: [
       '5-8 Pages',
       'Custom Design',
-      'Free Domain & Hosting',
       'Blog Section',
       'Advanced SEO',
       'WhatsApp Integration',
@@ -246,6 +244,7 @@ const scroll = (direction) => {
 
             <!-- CTA Button -->
             <button
+             @click="openContact"
               v-if="!pkg.isCustom"
               :class="[
                 'w-full font-bold py-4 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg',
@@ -257,6 +256,7 @@ const scroll = (direction) => {
               Get Started
             </button>
             <button
+             @click="openContact"
               v-else
               class="w-full font-bold py-4 rounded-xl transition-all duration-200 bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white shadow-md hover:shadow-lg"
             >
