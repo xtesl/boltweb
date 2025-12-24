@@ -1,6 +1,12 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
+const emit = defineEmits(['open-contact'])
+
+const openContact = () => {
+   emit('open-contact')
+}
+
 const typedText = ref('')
 const words = ['professional', 'stunning', 'modern', 'impactful']
 let wordIndex = 0
@@ -86,7 +92,9 @@ const typeEffect = () => {
 
           <!-- Single CTA Button -->
           <div class="flex flex-col sm:flex-row gap-4">
-            <button class="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-bold text-lg rounded-2xl shadow hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+            <button 
+            @click="openContact"
+            class="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-bold text-lg rounded-2xl shadow hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
               <span>Start your project</span>
               
             </button>

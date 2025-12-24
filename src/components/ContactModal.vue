@@ -51,23 +51,23 @@ const contactMethods = [
   {
     icon: 'pi-whatsapp',
     title: 'WhatsApp',
-    value: '+233 XX XXX XXXX',
+    value: '+233 59 844 3133',
     action: 'Chat Now',
     color: 'green',
-    link: 'https://wa.me/233XXXXXXXXX'
+    link: 'https://wa.me/233598443133'
   },
   {
     icon: 'pi-phone',
     title: 'Call Us',
-    value: '+233 XX XXX XXXX',
+    value: '+233 59 844 3133',
     action: 'Call Now',
     color: 'primary',
-    link: 'tel:+233XXXXXXXXX'
+    link: 'tel:+233598443133'
   },
   {
     icon: 'pi-envelope',
     title: 'Email',
-    value: 'hello@boltweb.com.gh',
+    value: 'aimmanuel925@gmail.com',
     action: 'Send Email',
     color: 'accent',
     link: 'mailto:aimmanuel925@gmail.com'

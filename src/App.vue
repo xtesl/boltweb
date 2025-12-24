@@ -3,16 +3,9 @@
         @open-contact="showContactModal = true"
     />
  <main>
-    <RouterView />
-      <Footer />
+    <router-view  @open-contact="showContactModal = true"/>
+      <Footer @open-contact="showContactModal = true"/>
 
-      <ToastNotification
-      :show="toastState.show"
-      :type="toastState.type"
-      :message="toastState.message"
-      :duration="toastState.duration"
-      @close="close"
-    />
     <AboutModal 
       :show="showAboutModal" 
       @close="closeAboutModal" 
@@ -22,6 +15,14 @@
     :show="showContactModal" 
     @close="showContactModal = false" 
   />
+  
+  <ToastNotification
+      :show="toastState.show"
+      :type="toastState.type"
+      :message="toastState.message"
+      :duration="toastState.duration"
+      @close="close"
+    />
   </main>
   <WhatsAppButton 
       phone-number="233552510654"

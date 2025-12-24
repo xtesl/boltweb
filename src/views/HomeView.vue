@@ -25,10 +25,13 @@
       }"
     />
     <!-- Content -->
-    <HeroSection />
-    <Pricing />
-    <FAQsSection />
+    <HeroSection @open-contact="emit('open-contact')"/>
+    <div id="pricing" class="scroll-mt-20">
+      <Pricing />
+    </div>
+    <FAQsSection @open-contact="emit('open-contact')"/>
     <TeamSection />
+    <Workflow @open-contact="emit('open-contact')"/>
   </div>
 </template>
 
@@ -39,4 +42,7 @@ import SEO from '../components/SEO.vue'
 import TeamSection from '../components/TeamSection.vue'
 import StructuredData from '../components/StructuredData.vue'
 import Pricing from '../components/Pricing.vue'
+import Workflow from '../components/Workflow.vue'
+
+const emit = defineEmits(['open-contact'])
 </script>

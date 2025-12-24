@@ -38,6 +38,12 @@ const whatsappUrl = computed(() => {
   return `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 });
 
+const emit = defineEmits(['open-contact'])
+
+const openContact = () => {
+   emit('open-contact')
+}
+
 const socialLinks = [
   { icon: 'pi-facebook', href: '#', label: 'Facebook' },
   { icon: 'pi-twitter', href: 'https://x.com/boltweb_gh', label: 'X' },
@@ -48,27 +54,7 @@ const socialLinks = [
 </script>
 
 <template>
-  <!-- CTA Section Above Footer -->
-  <section class="bg-gradient-to-r from-primary-600 to-primary-700 py-16 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto text-center">
-      <h2 class="text-3xl sm:text-4xl font-black text-white mb-4">
-        Ready to Launch Your Website?
-      </h2>
-      <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-        Get a professional website in 7-14 days. No hidden fees. Just results.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <button class="bg-accent-500 hover:bg-accent-600 text-white font-bold px-8 py-4 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 transform hover:scale-105">
-          <i class="pi pi-bolt"></i>
-          <span>Get Free Quote Now</span>
-        </button>
-        <button class="bg-white hover:bg-secondary-50 text-primary-600 font-bold px-8 py-4 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg">
-          <i class="pi pi-phone"></i>
-          <span>Call: +233 59 844 3133</span>
-        </button>
-      </div> 
-    </div>
-  </section>
+  
 
   <!-- Main Footer -->
   <footer class="bg-secondary-900 text-secondary-300">
@@ -224,3 +210,7 @@ const socialLinks = [
 
   </footer>
 </template>
+
+<style scoped>
+
+</style>

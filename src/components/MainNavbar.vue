@@ -1,7 +1,8 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted} from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import { useScrollTo } from '../composables/useScrollTo'
 
 const { locale } = useI18n()
 
@@ -18,6 +19,8 @@ const languages = [
   { code: 'es', label: 'Español', flag: 'es' }
 ]
 
+const { scrollToSection } = useScrollTo()
+
 // Get current language object
 const currentLanguage = computed(() => {
   return languages.find(lang => lang.code === locale.value) || languages[0]
@@ -33,6 +36,11 @@ const selectLanguage = (lang) => {
 }
 
 const emit = defineEmits(['open-about', 'open-contact', 'open-services'])
+
+const handlePricingClick = () => {
+  closeMenu()
+  scrollToSection('pricing')
+}
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
@@ -73,6 +81,7 @@ if (typeof window !== 'undefined') {
     isScrolled.value = window.scrollY > 20
   })
 }
+
 </script>
 
 <template>
@@ -125,8 +134,8 @@ if (typeof window !== 'undefined') {
             Portfolio
           </router-link>
 
-          <router-link 
-            to="/pricing" 
+          <button
+            @click="scrollToSection('pricing')"
             :class="[
               'group px-5 py-2.5 rounded-lg font-semibold text-base transition-all duration-200',
               isActive('/pricing') 
@@ -135,7 +144,7 @@ if (typeof window !== 'undefined') {
             ]"
           >
             Pricing
-          </router-link>
+        </button>
 
           <!-- About Dropdown -->
           <button 
@@ -294,9 +303,8 @@ if (typeof window !== 'undefined') {
           <span>Portfolio</span>
         </router-link>
         
-        <router-link
-          to="/pricing" 
-          @click="closeMenu"
+        <button
+          @click="handlePricingClick"
           :class="[
             'group flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold text-base transition-all duration-200 transform',
             isActive('/pricing') 
@@ -318,7 +326,7 @@ if (typeof window !== 'undefined') {
             ]"></i>
           </div>
           <span>Pricing</span>
-        </router-link>
+        </button>
         
         <!-- About -->
         <button

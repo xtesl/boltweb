@@ -7,6 +7,12 @@ const activeIndex = ref(null)
 const contentRefs = ref([])
 const contentHeights = ref({})
 
+const emit = defineEmits(['open-contact'])
+
+const openContact = () => {
+   emit('open-contact')
+}
+
 const categories = [
   { id: 'general', name: 'General', icon: 'pi-info-circle' },
   { id: 'pricing', name: 'Pricing & Payment', icon: 'pi-dollar' },
@@ -261,14 +267,16 @@ onMounted(async () => {
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <button class="bg-accent-500 hover:bg-accent-600 text-white font-bold px-8 py-4 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl inline-flex items-center justify-center gap-2">
-            <i class="pi pi-whatsapp text-xl"></i>
-            <span>Chat on WhatsApp</span>
+          <button 
+          @click="openContact"
+          class="bg-accent-500 hover:bg-accent-600 text-white font-bold px-8 py-4 rounded-xl transition-all duration-200 hover:shadow-xl inline-flex items-center justify-center gap-2">
+            <i class="pi pi-envelope text-xl"></i>
+            <span>Contact Us</span>
           </button>
-          <button class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white border-2 border-white/30 font-bold px-8 py-4 rounded-xl transition-all duration-200 inline-flex items-center justify-center gap-2">
+          <!-- <button class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white border-2 border-white/30 font-bold px-8 py-4 rounded-xl transition-all duration-200 inline-flex items-center justify-center gap-2">
             <i class="pi pi-phone"></i>
             <span>Call Us Now</span>
-          </button>
+          </button> -->
         </div>
 
         <div class="flex items-center justify-center gap-6 mt-8 text-primary-100 text-sm">
