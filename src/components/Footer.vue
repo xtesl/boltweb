@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useToast } from '../composables/useToast'
 
 const { success, error, warning, info } = useToast()
@@ -30,12 +30,20 @@ const services = [
   { name: 'Logo & Branding', href: '#' }
 ]
 
+const phoneNumber = '233552510654'
+const message = "Hello, BoltWeb!"
+
+const whatsappUrl = computed(() => {
+  const encodedMessage = encodeURIComponent(message);
+  return `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+});
+
 const socialLinks = [
   { icon: 'pi-facebook', href: '#', label: 'Facebook' },
   { icon: 'pi-twitter', href: 'https://x.com/boltweb_gh', label: 'X' },
   { icon: 'pi-instagram', href: 'https://instagram.com/boltweb.gh', label: 'Instagram' },
   { icon: 'pi-linkedin', href: '#', label: 'LinkedIn' },
-  { icon: 'pi-whatsapp', href: '#', label: 'WhatsApp' }
+  { icon: 'pi-whatsapp', href: whatsappUrl, label: 'WhatsApp' }
 ]
 </script>
 
@@ -56,9 +64,9 @@ const socialLinks = [
         </button>
         <button class="bg-white hover:bg-secondary-50 text-primary-600 font-bold px-8 py-4 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg">
           <i class="pi pi-phone"></i>
-          <span>Call: +233 XX XXX XXXX</span>
+          <span>Call: +233 59 844 3133</span>
         </button>
-      </div>
+      </div> 
     </div>
   </section>
 
