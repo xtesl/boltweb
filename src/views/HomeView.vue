@@ -27,7 +27,7 @@
     <!-- Content -->
     <HeroSection @open-contact="emit('open-contact')"/>
     <div id="pricing" class="scroll-mt-20">
-      <Pricing />
+      <Pricing @open-contact="emit('open-contact')"/>
     </div>
     <FAQsSection @open-contact="emit('open-contact')"/>
     <TeamSection />

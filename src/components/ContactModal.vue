@@ -116,24 +116,38 @@ const handleSubmit = async () => {
   isSubmitting.value = true
 
   try {
-    // Simulate API call - Replace with your actual API
-    await new Promise(resolve => setTimeout(resolve, 1500))
-    
-    // Success
-    success('Message sent! We\'ll get back to you within 24 hours.')
-    resetForm()
-    
-    // Close modal after short delay
-    setTimeout(() => {
-      closeModal()
-    }, 2000)
-    
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        access_key: '4adcbc36-1793-42d4-9e25-bf29c31d9f1e', // Get free from web3forms.com
+        name: formData.value.name,
+        email: formData.value.email,
+        phone: formData.value.phone,
+        service: formData.value.service,
+        budget: formData.value.budget,
+        timeline: formData.value.timeline,
+        message: formData.value.message,
+        subject: `New Request from ${formData.value.name}`
+      })
+    })
+
+    if (response.ok) {
+      success('Message sent! We\'ll get back to you within 24 hours.')
+      resetForm()
+      setTimeout(() => closeModal(), 2000)
+    } else {
+      throw new Error('Failed to send')
+    }
   } catch (err) {
     error('Failed to send message. Please try WhatsApp or email.')
   } finally {
     isSubmitting.value = false
   }
 }
+
 
 // Prevent body scroll when modal is open
 watch(() => props.show, (newVal) => {

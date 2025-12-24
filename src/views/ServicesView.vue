@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue'
 
+const emit = defineEmits(['open-contact'])
+
 const services = [
   {
     id: 1,
@@ -163,9 +165,9 @@ const colorClasses = {
               </div>
             </div>
             
-            <button :class="['w-full text-white font-bold py-3 px-6 rounded-lg transition-all duration-200', colorClasses[service.color].button]">
+            <!-- <button :class="['w-full text-white font-bold py-3 px-6 rounded-lg transition-all duration-200', colorClasses[service.color].button]">
               Learn More
-            </button>
+            </button> -->
           </div>
         </div>
       </div>
@@ -181,14 +183,18 @@ const colorClasses = {
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <button class="bg-accent-500 hover:bg-accent-600 text-white font-bold px-8 py-4 rounded-xl transition-all duration-200 flex items-center justify-center gap-2">
-            <i class="pi pi-phone"></i>
+          <button 
+          @click="emit('open-contact')"
+          class="bg-accent-500 hover:bg-accent-600 text-white font-bold px-8 py-4 rounded-xl transition-all duration-200 flex items-center justify-center gap-2">
+            <i class="pi pi-envelope"></i>
             <span>Get Free Consultation</span>
           </button>
-          <button class="bg-white/10 hover:bg-white/20 text-white border-2 border-white/20 font-bold px-8 py-4 rounded-xl transition-all duration-200 flex items-center justify-center gap-2">
+          <!-- <a 
+          herf="https://wa.me/233598443133"
+          class="bg-white/10 hover:bg-white/20 text-white border-2 border-white/20 font-bold px-8 py-4 rounded-xl transition-all duration-200 flex items-center justify-center gap-2">
             <i class="pi pi-whatsapp"></i>
             <span>WhatsApp Us</span>
-          </button>
+        </a> -->
         </div>
       </div>
 

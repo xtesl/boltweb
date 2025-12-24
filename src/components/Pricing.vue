@@ -3,6 +3,12 @@ import { ref } from 'vue'
 
 const scrollContainer = ref(null)
 
+const emit = defineEmits(['open-contact'])
+
+const openContact = () => {
+   emit('open-contact')
+}
+
 const packages = [
   {
     name: 'Starter',
@@ -280,7 +286,9 @@ const scroll = (direction) => {
         <p class="text-secondary-600 mb-4">
           Not sure which package fits? We're here to help!
         </p>
-        <button class="text-primary-600 hover:text-primary-700 font-bold inline-flex items-center gap-2 group">
+        <button
+         @click="openContact"
+         class="text-primary-600 hover:text-primary-700 font-bold inline-flex items-center gap-2 group">
           <span>Chat with us to find your perfect package</span>
           <i class="pi pi-arrow-right text-sm group-hover:translate-x-1 transition-transform"></i>
         </button>
