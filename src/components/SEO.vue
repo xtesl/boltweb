@@ -4,11 +4,11 @@ import { useHead } from '@vueuse/head'
 const props = defineProps({
   title: {
     type: String,
-    default: 'BoltWeb'
+    default: 'BoltWeb Ghana'
   },
   description: {
     type: String,
-    default: 'BoltWeb delivers fast websites for business in no time. Get your business online in small time with few cedis.'
+    default: 'BoltWeb Ghana delivers fast websites for business in no time. Get your business online in small time with few cedis.'
   },
   image: {
     type: String,
@@ -29,7 +29,7 @@ useHead({
   meta: [
     // Basic Meta Tags
     { name: 'description', content: props.description },
-    { name: 'keywords', content: 'Fast, Affordable, Website, ' },
+    { name: 'keywords', content: 'BoltWeb Ghana, website design Sunyani, web development Ghana, BoltWeb Accra, professional websites Ghana' },
     { name: 'author', content: 'Emmanuel' },
     
     // Open Graph / Facebook
@@ -38,7 +38,7 @@ useHead({
     { property: 'og:image', content: props.image },
     { property: 'og:url', content: props.url },
     { property: 'og:type', content: props.type },
-    { property: 'og:site_name', content: 'BoltWeb' },
+    { property: 'og:site_name', content: 'BoltWeb Ghana' },
     
     // Twitter Card
     { name: 'twitter:card', content: 'summary_large_image' },

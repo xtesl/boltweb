@@ -90,7 +90,7 @@ const faqs = ref({
     },
     {
       question: 'How do I contact support?',
-      answer: 'Reach us via WhatsApp (+233 XX XXX XXXX), email (info@boltweb.com.gh), or phone. WhatsApp is fastest for quick questions. For complex issues, email works best so we can document everything.',
+      answer: 'Reach us via WhatsApp (+233 55 251 0654), email (aimmanuel925gmail.com), or phone. WhatsApp is fastest for quick questions. For complex issues, email works best so we can document everything.',
     }
   ]
 })

@@ -45,7 +45,7 @@ const openContact = () => {
 }
 
 const socialLinks = [
-  { icon: 'pi-facebook', href: '#', label: 'Facebook' },
+  { icon: 'pi-facebook', href: 'https://facebook.com/profile.php?id=61585276337396', label: 'Facebook' },
   { icon: 'pi-twitter', href: 'https://x.com/boltweb_gh', label: 'X' },
   { icon: 'pi-instagram', href: 'https://instagram.com/boltweb.gh', label: 'Instagram' },
   { icon: 'pi-linkedin', href: '#', label: 'LinkedIn' },
@@ -187,9 +187,9 @@ const socialLinks = [
         <!-- Copyright -->
         <div class="text-secondary-400 text-sm text-center md:text-left">
           © {{ currentYear }} <span class="font-bold text-white">BoltWeb</span>. All rights reserved. 
-          <span class="hidden sm:inline">Made with</span>
+          <!-- <span class="hidden sm:inline">Made with</span>
           <i class="pi pi-heart-fill text-red-500 mx-1"></i>
-          <span class="hidden sm:inline">in Ghana</span>
+          <span class="hidden sm:inline">in Ghana</span> -->
         </div>
 
         <!-- Legal Links -->

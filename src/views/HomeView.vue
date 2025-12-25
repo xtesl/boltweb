@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-gray-900">
     <SEO 
-      title="BoltWeb - Fast & Affordable Websites"
+      title="BoltWeb Ghana - Fast & Affordable Websites"
       description="Get your business online quickly with BoltWeb's fast and affordable website solutions."
       image="https://boltweb.onrender.com/images/og-image.jpg"
       url="https://boltweb.onrender.com"
@@ -9,7 +9,7 @@
     <StructuredData 
       type="Organization"
       :data="{
-        name: 'BoltWeb',
+        name: 'BoltWeb Ghana',
         url: 'https://boltweb.onrender.com',
         logo: 'https://boltweb.onrender.com/og-image.jpg',
         contactPoint: {
@@ -17,8 +17,14 @@
           telephone: '+233-55-251-0654',
           contactType: 'customer service'
         },
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Accra',
+          addressRegion: 'Sunayni',
+          addressCountry: 'GH'
+        },
         sameAs: [
-          'https://facebook.com/yourpage',
+          'https://facebook.com/profile.php?id=61585276337396',
           'https://x.com/manuel_tamme',
           'https://instagram.com/eddwats'
         ]
