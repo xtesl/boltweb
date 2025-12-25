@@ -269,6 +269,7 @@ if (typeof window !== 'undefined') {
         <!-- Services -->
         <router-link
           :to="'/services'"
+          @click="closeMenu"
           class="group flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold text-base transition-all duration-200 transform text-secondary-800 hover:bg-primary-600 hover:text-white hover:translate-x-2 w-full"
         >
           <div class="w-10 h-10 rounded-lg flex items-center justify-center transition-colors bg-primary-50 group-hover:bg-white/20">
