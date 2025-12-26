@@ -94,14 +94,18 @@ const typeEffect = () => {
           <div class="flex flex-col sm:flex-row gap-4">
             <button 
             @click="openContact"
-            class="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-bold text-lg rounded-2xl shadow hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+            class="group inline-flex items-center justify-center gap-3 px-8 py-4 
+            bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-bold text-lg 
+            rounded-2xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
               <span>Start your project</span>
               
             </button>
 
             <router-link 
             :to="'/portfolio'"
-            class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white border-2 border-secondary-300 hover:border-primary-500 text-secondary-800 hover:text-primary-600 font-semibold text-lg rounded-2xl transition-all duration-300 hover:shadow-lg">
+            class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white border-2 
+            border-secondary-300 hover:border-primary-500 text-secondary-800 hover:text-primary-600 
+            font-semibold text-lg rounded-2xl transition-all duration-300 hover:shadow-lg">
               <span>View our work</span>
             </router-link>
           </div>

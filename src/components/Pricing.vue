@@ -201,7 +201,7 @@ const scroll = (direction) => {
 
             <!-- Icon -->
             <div :class="[
-              'w-14 h-14 rounded-2xl bg-gradient-to-br flex items-center justify-center mb-6 shadow-lg',
+              'w-14 h-14 rounded-md bg-gradient-to-br flex items-center justify-center mb-6',
               colorClasses[pkg.color].bg
             ]">
               <i :class="['pi text-white text-2xl', pkg.icon]"></i>
