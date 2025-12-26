@@ -143,10 +143,10 @@ onMounted(async () => {
       
       <!-- Header -->
       <div class="text-center mb-12">
-        <div class="inline-flex items-center gap-2 bg-primary-600/20 text-primary-400 px-4 py-2 rounded-full text-sm font-bold mb-6">
+        <!-- <div class="inline-flex items-center gap-2 bg-primary-600/20 text-primary-400 px-4 py-2 rounded-full text-sm font-bold mb-6">
           <i class="pi pi-question-circle"></i>
           <span>Frequently Asked Questions</span>
-        </div>
+        </div> -->
         
         <h2 class="text-4xl sm:text-5xl font-black text-white mb-4">
           Got Questions?

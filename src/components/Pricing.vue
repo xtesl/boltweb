@@ -134,10 +134,10 @@ const scroll = (direction) => {
       
       <!-- Header -->
       <div class="text-center mb-12">
-        <div class="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-bold mb-6">
-          <i class="pi pi-tag"></i>
+        <!-- <div class="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-bold mb-6"> -->
+          <!-- <i class="pi pi-tag"></i>
           <span>Simple, Transparent Pricing</span>
-        </div>
+        </div> -->
         
         <h2 class="text-4xl sm:text-5xl font-black text-secondary-900 mb-4">
           Choose Your Perfect

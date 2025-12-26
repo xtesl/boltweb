@@ -106,10 +106,10 @@ const colorClasses = {
       
       <!-- Section Header -->
       <div class="text-center mb-16">
-        <div class="inline-flex items-center gap-2 bg-primary-100 text-primary-700 px-4 py-2 rounded-full text-sm font-bold mb-6">
+        <!-- <div class="inline-flex items-center gap-2 bg-primary-100 text-primary-700 px-4 py-2 rounded-full text-sm font-bold mb-6">
           <i class="pi pi-wrench"></i>
           <span>Our Services</span>
-        </div>
+        </div> -->
         
         <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black text-secondary-900 mb-6">
           What We Do Best

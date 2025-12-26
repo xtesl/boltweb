@@ -218,10 +218,10 @@ onUnmounted(() => {
               
               <!-- Header -->
               <div class="text-center mb-8">
-                <div class="inline-flex items-center gap-2 bg-accent-100 text-accent-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
+                <!-- <div class="inline-flex items-center gap-2 bg-accent-100 text-accent-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
                   <i class="pi pi-send"></i>
                   <span>Get In Touch</span>
-                </div>
+                </div> -->
                 
                 <h2 class="text-3xl sm:text-4xl font-black text-secondary-900 mb-3">
                   Let's Build Something
